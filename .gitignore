@@ -3,6 +3,8 @@
 node_modules
 bower_components
 */psd/*
+*/svg/*
+*/favicon/*
 */images/*
 */builder/*
 

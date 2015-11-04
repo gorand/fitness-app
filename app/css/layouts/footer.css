@@ -4,19 +4,22 @@
 	height: $footer-height;
 	margin-top: -$footer-height;
     background-color: $base-color-1;
-	border-top: solid 1px color($base-background b(3%));
+	border-top: solid 5px $base-color;
 	z-index: 1;
+	box-shadow: 0 0 2px rgba(35,35,35,0.2) inset, 
+				0 0 4px rgba(35,35,35,0.4) inset, 
+				0 0 10px rgba(35,35,35,0.5) inset;
  }
 .footer{
 	position: relative;
 	color: #4a545d;
-	font: 14px/18px $font-default;
+	font: 13px/1.35 $font-default;
 	&__info{
 		position: absolute;
 		left: 50%;
-		bottom: -60px;
+		bottom: -40px;
 		text-align: center;
-		font-size: 13px;
+		font-size: 15px;
 		color: white;
 	}
 }
