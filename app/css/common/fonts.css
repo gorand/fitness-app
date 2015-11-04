@@ -1,0 +1,36 @@
+/* icon for Project - custom font*/
+
+@font-face {
+    font-family: 'Iconproject'; 
+    src: url('../fonts/iconproject/iconproject.eot');
+    src: url('../fonts/iconproject/iconproject.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/iconproject/iconproject.woff') format('woff'),
+         url('../fonts/iconproject/iconproject.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* icon Font Awesome*/
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../css/fonts/fontawesome-webfont.eot');
+    src: url('../css/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../css/fonts/fontawesome-webfont.woff') format('woff'),
+         url('../css/fonts/fontawesome-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Roboto*/
+/*$roboto-font-path: '../fonts/roboto-fontface';
+@include roboto-font('Regular', 400);
+*/
+
+@font-face {
+  font-family: 'ProximaNovaCond-Semibold';
+  src: url('../fonts/proximanova/ProximaNovaCond-Semibold.eot?#iefix') format('embedded-opentype'),  url('../fonts/proximanova/ProximaNovaCond-Semibold.otf')  format('opentype'),
+         url('../fonts/proximanova/ProximaNovaCond-Semibold.woff') format('woff'), url('../fonts/proximanova/ProximaNovaCond-Semibold.ttf')  format('truetype'), url('../fonts/proximanova/ProximaNovaCond-Semibold.svg#ProximaNovaCond-Semibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

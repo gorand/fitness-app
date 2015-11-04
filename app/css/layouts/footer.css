@@ -1,0 +1,18 @@
+/* footer */
+#footer{
+	position: relative;
+	z-index: 1;
+	height: 80px;
+	padding: 0;
+    background-color: $base-background;
+	border-top: solid 1px color($base-background b(3%));
+ }
+.footer{
+	color: #4a545d;
+	font: 13px/20px $font-default;
+	&__info{
+		margin-top: 30px;
+		text-align: center;
+	}
+}
+

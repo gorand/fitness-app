@@ -1,0 +1,41 @@
+/* custom madal layouts */
+.modal-header{
+	border-bottom: solid 17px #67dffa;
+	background-color: #48cbe8;
+	margin: 0;
+	.title-form{
+		margin: 0 auto;
+		padding: 10px 0;
+		text-align: center;
+		font-family: fira_sansbook;
+		font-size: 40px;
+		line-height: 1.4;
+		color: #ffffff;
+	}
+}
+.modal-body{
+	padding: 15px;
+	overflow: hidden;
+	background-color: $base-background;
+}
+/* layouts for forms in modal */
+.modal-form{
+	.field-form{
+		font-size: 28px;
+		line-height: 34px;
+		padding: 10px 8px;
+		height: 60px;
+	}
+	.label-form{
+		font-size: 36px;
+		line-height: 42px;
+	}
+	.btn-form{
+		font-size: 36px;
+		line-height: 44px;
+		padding: 4px 64px 0;
+		max-width: 240px;
+	}
+	
+}
+

@@ -1,0 +1,16 @@
+//- about
+extends ./../layout.jade
+
+block page-title 
+	title Информация о нас
+
+block sidebar
+	-var currentItem = 'about.html';
+	include ./../partials/sidebar
+
+block content
+	section.part--content
+		header.part__head
+			h1.part__title Кто мы такие и что мы умеем!
+		article.part__inner
+			p Описание концепции компании, ее направления развития. Какие цели она перед собой ставит. 

@@ -1,0 +1,7 @@
+-// menu
+mixin menu(classWrap, classItem, classLink, ...items)
+	ul(class=classWrap)
+		each item in items
+			li(class=classItem)
+				a(class=classLink href='#')= item
+

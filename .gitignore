@@ -1,0 +1,29 @@
+# Folders #
+############
+node_modules
+bower_components
+*/psd/*
+*/images/*
+*/builder/*
+
+# Packages #
+############
+*.7z
+*.gz
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

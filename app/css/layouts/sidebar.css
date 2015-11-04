@@ -1,0 +1,14 @@
+/* sidebar */
+.sidebar{
+	&-wrap{}
+	&__title{
+		display: inline-block;
+		padding: 4px 10px;
+		background: $base-background;
+		border: solid 1px color($base-background b(15%));
+		border-radius: 2px;
+		font-size: 1.25em;
+		color: $black-2;
+		cursor: default;
+	}
+}

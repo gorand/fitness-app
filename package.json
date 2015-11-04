@@ -1,0 +1,19 @@
+{
+  "name": "gulp-project",
+  "version": "0.1.0",
+  "description": "Build a default project",
+  "devDependencies": {
+    "browser-sync": "latest",
+    "gulp": "latest",
+    "gulp-jade": "latest",
+    "gulp-notify": "latest",
+    "gulp-plumber": "latest",
+    "gulp-postcss": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "main-bower-files": "latest",
+    "postcss-color-function": "latest",
+    "precss": "latest",
+    "prettify": "latest"
+  }
+}
