@@ -1,7 +1,7 @@
 /* sidebar */
 .sidebar{
-	padding: 6px 12px;
-	background: $base-background;
+	padding: 8px 14px;
+	background: color($base-background l(+4%));
 	border: solid 1px color($base-background b(15%));
 	border-radius: 2px;
 	&__title{

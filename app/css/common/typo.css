@@ -55,21 +55,21 @@ p, .p{
 
 /* Links in text */
 a{
-  border-bottom: 1px solid $base-color;
   font-size: 1em;
-  line-height: 1.65;
+  line-height: 1.8;
   color: $base-color;
-  transition: all 0.3s cubic-bezier(0.05, 0.6, 0.6, 0.25);  
+  border-bottom: 1px solid color($base-color l(+8%));
+  transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);  
   &:hover, 
   &:focus{
-    border-bottom-color: color($base-color lightness(45%));
-    color: color($base-color saturation(90%));
+    color: $base-color-1;
     text-decoration: none;
+    border-bottom-color: $base-color-1;
   }
-}
-a.is-active{
-  border-bottom: none;
-  cursor: default;
+  &.is-active{
+    border-bottom: none;
+    cursor: default;
+  }
 }
 
 

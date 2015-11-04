@@ -1,6 +1,6 @@
 /* main layout */
 @define-extend %part-content {
-	background-color: $base-background;
+	background-color: color($base-background l(+4%));
 	border: 1px solid $base-background;	
 	border-radius: 3px;
 	margin-bottom: 20px;
@@ -22,6 +22,7 @@ body{
     height: auto !important;
 	height: 100%;
     margin: 0 auto;
+    padding: 0 0 $footer-height;
 }
 
 /* content */
@@ -41,18 +42,17 @@ body{
 .part{
 	&--content{
 		@extend %part-content;
-		padding: 8px 0 18px;
+		padding: 8px 22px 18px;
 	}
 	&__inner{
-		padding: 24px;
+		padding: 4px 0;
  	}
  	&__title{
 		display: inline-block;
 		margin: 0;
-		padding: 0 8px 0 32px;
-		color: color(black w(23%));
-		font: normal 30px/1.68 $font-additional-medium;
-		border-bottom: solid 2px $base-color-1;
+		padding: 2px 0;
+		color: $base-color-1;
+		font: normal 30px/1.25 $font-additional-medium;
  	}
 }
 
