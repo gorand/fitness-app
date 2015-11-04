@@ -49,10 +49,10 @@ body{
  	&__title{
 		display: inline-block;
 		margin: 0;
-		padding: 0 25px;
-		color: color(black w(32%));
-		font: normal 34px/58px $font-additional;
-		border-bottom: solid 2px color(black w(28%));
+		padding: 0 8px 0 32px;
+		color: color(black w(23%));
+		font: normal 30px/1.68 $font-additional-medium;
+		border-bottom: solid 2px $base-color-1;
  	}
 }
 

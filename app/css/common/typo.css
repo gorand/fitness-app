@@ -60,12 +60,12 @@ a{
   line-height: 1.65;
   color: $base-color;
   transition: all 0.3s cubic-bezier(0.05, 0.6, 0.6, 0.25);  
-  &:hover{
+  &:hover, 
+  &:focus{
     border-bottom-color: color($base-color lightness(45%));
     color: color($base-color saturation(90%));
     text-decoration: none;
   }
-  &:focus {}
 }
 a.is-active{
   border-bottom: none;

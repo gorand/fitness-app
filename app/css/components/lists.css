@@ -22,4 +22,7 @@
 			font-size: calc($font-unit * 17);
 		}
 	}
+	&__value{
+		font-family: $font-additional-bold;
+	}
 }

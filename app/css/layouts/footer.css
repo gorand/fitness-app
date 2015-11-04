@@ -1,17 +1,23 @@
 /* footer */
 #footer{
 	position: relative;
-	height: 80px;
-	z-index: 1;
-    background-color: $base-background;
+	height: $footer-height;
+	margin-top: -$footer-height;
+    background-color: $base-color-1;
 	border-top: solid 1px color($base-background b(3%));
+	z-index: 1;
  }
 .footer{
+	position: relative;
 	color: #4a545d;
-	font: 13px/20px $font-default;
+	font: 14px/18px $font-default;
 	&__info{
-		margin-top: 30px;
+		position: absolute;
+		left: 50%;
+		bottom: -60px;
 		text-align: center;
+		font-size: 13px;
+		color: white;
 	}
 }
 

@@ -8060,9 +8060,6 @@ button.close {
 /*Good color for success etc.*/
 /*Good color for success etc.*/
 /*Subtle color for subtle text*/
-/*Border-radius*/
-/*Button border-radius*/
-/*Consistent padding and margins*/
 /* colors */
 /* fonts*/
 .bold {
@@ -8102,8 +8099,8 @@ button.close {
  =================================================*/
 /* main layout */
 .part--content {
-    background-color: #F1F3F7;
-    border: 1px solid #F1F3F7;
+    background-color: #F7F7F7;
+    border: 1px solid #F7F7F7;
     border-radius: 3px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -8145,10 +8142,10 @@ body {
 .part__title {
     display: inline-block;
     margin: 0;
-    padding: 0 25px;
-    color: rgb(62, 62, 62);
-    font: normal 34px/58px "Roboto-Regular",Arial,Verdana,Helvetica,sans-serif;
-    border-bottom: solid 2px rgb(56, 56, 56);
+    padding: 0 8px 0 32px;
+    color: rgb(48, 48, 48);
+    font: normal 30px/1.68 "Roboto-Medium",Arial,Verdana,Helvetica,sans-serif;
+    border-bottom: solid 2px #00B6F5;
 }
 /* news */
 .news__item {
@@ -8256,18 +8253,17 @@ p, .p, .p-normal {
 }
 /* Links in text */
 a {
-    border-bottom: 1px solid #38A00D;
+    border-bottom: 1px solid #FD1243;
     font-size: 1em;
     line-height: 1.65;
-    color: #38A00D;
+    color: #FD1243;
     transition: all 0.3s cubic-bezier(0.05, 0.6, 0.6, 0.25);
 }
-a:hover {
-    border-bottom-color: rgb(76, 212, 17);
-    color: rgb(55, 165, 9);
+a:hover, a:focus {
+    border-bottom-color: rgb(227, 2, 51);
+    color: rgb(243, 27, 74);
     text-decoration: none;
 }
-a:focus {}
 a.is-active {
     border-bottom: none;
     cursor: default;
@@ -8277,15 +8273,17 @@ a.is-active {
 /* header */
 #header {
     position: relative;
-    z-index: 14;
-    min-height: 119px;
+    z-index: 10;
+    min-height: 100px;
     margin: 0 auto;
-    background-color: #F1F3F7;
-    border-bottom: solid 1px rgb(226, 226, 226);
+    background-color: #F7F7F7;
+    border-bottom: solid 1px rgb(227, 227, 227);
+}
+.header {
+    padding: 16px 0;
 }
 .header__logo {
     font: 28px/1.35 Arial,Verdana,Helvetica,sans-serif;
-    margin-top: 26px;
 }
 .header__logo-link {
     border-bottom: none;
@@ -8306,12 +8304,12 @@ a.is-active {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: #1A743D;
+    background-color: #00B6F5;
     color: #fff;
     text-decoration: none;
 }
 .header__soc-link:hover {
-    background-color: #088C19;
+    background-color: #FFC717;
 }
 .header__soc-icon {
     display: block;
@@ -8322,29 +8320,38 @@ a.is-active {
 /* footer */
 #footer {
     position: relative;
-    height: 80px;
+    height: 62px;
+    margin-top: -62px;
+    background-color: #00B6F5;
+    border-top: solid 1px rgb(247, 247, 247);
     z-index: 1;
-    background-color: #F1F3F7;
-    border-top: solid 1px rgb(242, 244, 247);
 }
 .footer {
+    position: relative;
     color: #4a545d;
-    font: 13px/20px Arial,Verdana,Helvetica,sans-serif;
+    font: 14px/18px Arial,Verdana,Helvetica,sans-serif;
 }
 .footer__info {
-    margin-top: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: -60px;
     text-align: center;
+    font-size: 13px;
+    color: white;
 }
 /* sidebar */
-.sidebar-wrap {}
+.sidebar {
+    padding: 6px 12px;
+    background: #F7F7F7;
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 2px;
+}
 .sidebar__title {
     display: inline-block;
-    padding: 4px 10px;
-    background: #F1F3F7;
-    border: solid 1px rgb(220, 220, 220);
-    border-radius: 2px;
-    font-size: 1.25em;
-    color: $black-2;
+    font-family: "Roboto-Bold",Arial,Verdana,Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #00B6F5;
     cursor: default;
 }
 /* custom madal layouts */
@@ -8365,7 +8372,7 @@ a.is-active {
 .modal-body {
     padding: 15px;
     overflow: hidden;
-    background-color: #F1F3F7;
+    background-color: #F7F7F7;
 }
 /* layouts for forms in modal */
 .modal-form .field-form {
@@ -8394,7 +8401,7 @@ a.is-active {
     line-height: calc(1px * 22);
 }
 .menu__link.is-active {
-    color: rgb(81, 100, 74);
+    color: rgb(153, 117, 125);
 }
 .menu__link.is-active:after {
     content: " >";
@@ -8415,4 +8422,7 @@ a.is-active {
 }
 .list__item-contact {
     font-size: calc(1px * 17);
+}
+.list__value {
+    font-family: "Roboto-Bold",Arial,Verdana,Helvetica,sans-serif;
 }
