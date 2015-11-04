@@ -3,7 +3,7 @@
 	padding: 20px 0 0 20px;	
 }
 @define-extend listItem{
-	font-size: calc($font-unit * 16);
+	font-size: calc($font-unit * 15);
 	line-height: 1.3;
 }
 .list{

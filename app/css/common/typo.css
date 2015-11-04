@@ -19,7 +19,8 @@ h1{
 	font: normal 34px/58px $font-additional;
 	border-bottom: solid 2px $black-4;
 }
-h2, .title-h2{
+.title-h2{
+  font: normal 22px/30px $font-additional;
 }
 h3, .title-h3{
 	font: normal 16px/24px $font-additional;
