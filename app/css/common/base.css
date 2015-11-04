@@ -1,6 +1,6 @@
 /* main layout */
 @define-extend %part-content {
-	background-color: color($base-background l(+4%));
+	background-color: color($base-background l(+3%));
 	border: 1px solid $base-background;	
 	border-radius: 3px;
 	margin-bottom: 20px;

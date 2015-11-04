@@ -8100,7 +8100,7 @@ button.close {
 /* main layout */
 .part--content {
     background-color: rgb(247, 247, 247);
-    border: 1px solid #ECECEC;
+    border: 1px solid #EFEFEF;
     border-radius: 3px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -8120,7 +8120,7 @@ body {
     height: auto !important;
     height: 100%;
     margin: 0 auto;
-    padding: 0 0 60px;
+    padding: 0 0 62px;
 }
 /* content */
 .content {
@@ -8276,11 +8276,12 @@ a.is-active {
     z-index: 10;
     min-height: 100px;
     margin: 0 auto;
-    background-color: #ECECEC;
-    border-bottom: solid 1px rgb(196, 196, 196);
+    background-color: rgb(252, 252, 252);
+    border-top: solid 4px #00B6F5;
+    border-bottom: solid 4px #00B6F5;
 }
 .header {
-    padding: 18px 0;
+    padding: 14px 0;
 }
 .header__logo {
     font: 28px/1.35 Arial,Verdana,Helvetica,sans-serif;
@@ -8320,10 +8321,10 @@ a.is-active {
 /* footer */
 #footer {
     position: relative;
-    height: 60px;
-    margin-top: -60px;
+    height: 62px;
+    margin-top: -62px;
     background-color: #00B6F5;
-    border-top: solid 4px #FD1243;
+    border-top: solid 3px #FD1243;
     z-index: 1;
     box-shadow: 0 0 2px rgba(35,35,35,0.2) inset, 
 				0 0 4px rgba(35,35,35,0.4) inset, 
@@ -8375,7 +8376,7 @@ a.is-active {
 .modal-body {
     padding: 15px;
     overflow: hidden;
-    background-color: #ECECEC;
+    background-color: #EFEFEF;
 }
 /* layouts for forms in modal */
 .modal-form .field-form {

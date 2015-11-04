@@ -4,14 +4,14 @@ $good-color: #5dae1b; /*Good color for success etc.*/
 $info-color: #10bade; /*Good color for success etc.*/
 $warning-color: #dea110; /*Good color for success etc.*/
 $subtle-color: #999; /*Subtle color for subtle text*/
-$base-background: #ECECEC;
+$base-background: #EFEFEF;
 $base-color: #FD1243;
 $base-color-1: #00B6F5;
 $base-color-2 :#FFC717;
 
 $padding: 30px;
 $margin: 12px;
-$footer-height: 60px;
+$footer-height: 62px;
 
 /* colors */
 $color-white: #fbfcfd;
