@@ -1,10 +1,9 @@
 var gulp = require('gulp'),
-	jade = require('gulp-jade'),
 	postcss = require('gulp-postcss'),
 	precss = require('precss'),
-	colorFunction = require("postcss-color-function"),	
 	browserSync = require('browser-sync').create(),
  	mainBowerFiles = require('main-bower-files'),
+	concat = require("gulp-concat"),
 	rename = require("gulp-rename"),
 	plumber = require('gulp-plumber'),	
 	notify = require('gulp-notify');
@@ -18,20 +17,10 @@ gulp.task('browser-sync', function() {
     });
 });
 
-// convert from Jade to HTML
-gulp.task('template', function(){
-	gulp.src('app/templates/pages/*.jade')
-		.pipe(jade({
-			pretty: true
-		}))	
-		.pipe(gulp.dest('dist'))
-});
-
 // convert from PostCSS to CSS
 gulp.task('postcss',  function() {
 	var processors = [
-			precss,
-			colorFunction
+			precss
 		];
     return gulp.src(['app/css/main.css'])
     	.pipe(plumber())
@@ -43,8 +32,11 @@ gulp.task('postcss',  function() {
 
 // javascript
 gulp.task('js', function(){
-	gulp.src("app/js/main.js")
-	.pipe(gulp.dest("dist/js/"))
+	gulp.src([
+		'builds/dev/app/**/*.js'
+		])
+	.pipe(concat('app.js'))
+	.pipe(gulp.dest("builds/dev"))
 });
 
 // main bower files
@@ -62,61 +54,17 @@ gulp.task('jsMainBower', function() {
 });
 gulp.task('allMainBower',['fontsMainBower', 'cssMainBower', 'jsMainBower']);
 
-// image optimization
-gulp.task('image', function() {
-     gulp.src('dist/img/*')
-       .pipe(gulp.dest('raw/images'))
-       .pipe(imagemin({
-       		progressive: true,
-       		use: [pngquant()]
-       }))
-       .pipe(gulp.dest('dist/img'));
- });
-
-// convert from HTML to Jade
- gulp.task('convert', function(){
- 	gulp.src('raw/builder/html/*.html')
- 		.pipe(html2jade())
-		.pipe(notify('Шаблоны .jade обновлены'))
- 		.pipe(gulp.dest('raw/builder/jade'));
- });
-
 
 gulp.task('watch', function() {
-   gulp.watch(['app/css/*.css', 'app/css/**/*.css', 'app/templates/*.jade', 'app/templates/**/*.jade'], ['postcss', 'template']).on("change", browserSync.reload);
+   gulp.watch(
+   	['app/css/*.css', 'app/css/**/*.css', 'builds/dev/app/*.js'], 
+	['postcss', 'js'])
+   .on("change", browserSync.reload);
 });
 
-gulp.task('convert', function(){
-	gulp.src('raw/builder/html/*.html')
-		.pipe(html2jade())
-	.pipe(notify('Шаблоны .jade обновлены'))
-		.pipe(gulp.dest('raw/builder/jade'));
-});
-
-gulp.task('fonts', function(){
-	gulp.src("app/icons/*.svg")
-	.pipe(iconfont({
-	  fontName: 'iconproject',
-	  appendCodepoints: true  
-	}))
-	.on('codepoints', function(codepoints, options){
-		console.log(codepoints, options);
-	})
-	.pipe(gulp.dest("dist/fonts/iconproject"))
-});
-
-// include fonts
-gulp.task('tofonts1', function(){
-	gulp.src("bower_components/fontawesome/fonts/*")
-	.pipe(gulp.dest("dist/fonts/fontawesome"))
-});
-gulp.task('tofonts2', function(){
-	gulp.src("bower_components/roboto-fontface/fonts/*")
-	.pipe(gulp.dest("dist/fonts/roboto-fontface"))
-});
 
 // default task
-gulp.task('default', ['browser-sync', 'postcss', 'template', 'js', 'watch']);
+gulp.task('default', ['browser-sync', 'postcss', 'js', 'watch']);
 
 // other tasks
-gulp.task('update', [ 'mainBower', 'postcss', 'template', 'fonts']);
+gulp.task('update', [ 'mainBower', 'postcss']);

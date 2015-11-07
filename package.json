@@ -5,14 +5,15 @@
   "devDependencies": {
     "browser-sync": "latest",
     "gulp": "latest",
+    "gulp-concat": "^2.6.0",
     "gulp-jade": "latest",
     "gulp-notify": "latest",
     "gulp-plumber": "latest",
     "gulp-postcss": "latest",
     "gulp-rename": "latest",
     "gulp-sass": "latest",
-    "main-bower-files": "latest",
-    "postcss-color-function": "latest",
+    "postcss": "^5.0.10",
+    "postcss-color-function": "^2.0.0",
     "precss": "latest",
     "prettify": "latest"
   }
