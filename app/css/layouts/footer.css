@@ -3,8 +3,8 @@
 	position: relative;
 	height: $footer-height;
 	margin-top: -$footer-height;
-    background-color: $base-color-1;
-	border-top: solid 3px $base-color;
+    background-color: color($base-background l(+1%));
+	border-top: solid 4px $base-color-1;
 	z-index: 1;
 	box-shadow: 0 0 2px rgba(35,35,35,0.2) inset, 
 				0 0 4px rgba(35,35,35,0.4) inset, 
@@ -17,10 +17,9 @@
 	&__info{
 		position: absolute;
 		left: 50%;
-		bottom: -46px;
+		bottom: -42px;
 		text-align: center;
 		font-size: 15px;
-		color: white;
 	}
 }
 
