@@ -1,10 +1,10 @@
-# Webapp
-Structure for a simple web site
+# Fitness-app
+Angular.js application
 
 ##Installation
 
 ```js
-npm install gulp gulp-postcss gulp-jade gulp-rename gulp-notify gulp-webserver --save-dev
+npm install 
 bower install
 ```
 
