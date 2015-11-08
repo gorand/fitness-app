@@ -2138,12 +2138,12 @@ a.is-active {
 .footer {
     position: relative;
     color: #4a545d;
-    font: 13px/1.35 Arial,Verdana,Helvetica,sans-serif;
+    font: 12px/1.35 Arial,Verdana,Helvetica,sans-serif;
 }
 .footer__info {
     position: absolute;
     left: 50%;
-    bottom: -42px;
+    bottom: 0;
     text-align: center;
     font-size: 15px;
 }

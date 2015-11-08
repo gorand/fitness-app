@@ -64,7 +64,7 @@ gulp.task('allMainBower',['fontsMainBower', 'cssMainBower', 'jsMainBower']);
 
 gulp.task('watch', function() {
    gulp.watch(
-   	['app/css/*.css', 'app/css/**/*.css', 'builds/dev/app/*.js'], 
+   	['builds/app/css/*.css', 'builds/dev/app/css/**/*.css', 'builds/dev/app/*.js'], 
 	['postcss', 'js'])
    .on("change", browserSync.reload);
 });
