@@ -12,7 +12,9 @@
 		&-link{
 			border-bottom: none;
 		}
-        &-img{}
+        &-img{
+            width: 150px;
+        }
 	}
     &__soc{
 		text-align: right;
