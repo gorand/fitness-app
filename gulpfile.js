@@ -19,14 +19,16 @@ gulp.task('browser-sync', function() {
 
 // convert from PostCSS to CSS
 gulp.task('postcss',  function() {
-	var processors = [
-			precss
-		];
-    return gulp.src(['builds/dev/app/main.scss'])
+    gulp.src(['builds/dev/app/main.css'])
 		.pipe(plumber())
-		.pipe(postcss(processors))
+		.pipe(postcss([precss]))
 		.pipe(notify('CSS-файлы успешно обновлены'))
 		.pipe(concat('app.css'))
+		.pipe(gulp.dest('builds/dev'));
+    gulp.src([
+    		'bower_components/material-design-lite/material.css'
+    	])
+		.pipe(concat('theme.css'))
 		.pipe(gulp.dest('builds/dev'));
 });
 
