@@ -1,3 +1,4 @@
+'use strict';
 var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     precss = require('precss'),

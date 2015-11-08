@@ -15,8 +15,15 @@ body{
     height: auto !important;
 	height: 100%;
     margin: 0 auto;
+    background: url('img/bg.jpg') 0 0 no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
 }
-
+#footer{
+    padding: 6px 28px;
+}
 /* content */
 .content{
 	position:relative;
