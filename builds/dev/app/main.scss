@@ -1,0 +1,37 @@
+
+/** 
+ * Include of external style
+ =================================================*/
+@import "css/vendor/normalize.css";
+@import "css/vendor/bootstrap.css";
+
+/* icon font  */
+@import "css/vendor/font-awesome.css";
+
+/* typography font */
+@import "css/vendor/roboto-fontface.css";
+
+
+/** 
+ * Variables and mixins for project
+ =================================================*/
+@import "css/helpers/variables.css";
+@import "css/helpers/mixins.css";
+@import "css/helpers/helpers.css";
+
+/** 
+ * Base project style
+ =================================================*/
+@import "css/common/base.css";
+@import "css/common/fonts.css";
+@import "css/common/typo.css";
+
+/* specific project styles */
+@import "css/layouts/header.css";
+@import "css/layouts/footer.css";
+@import "css/layouts/sidebar.css";
+@import "css/layouts/modal.css";
+
+/* components */
+@import "css/components/navigation.css";
+@import "css/components/lists.css";

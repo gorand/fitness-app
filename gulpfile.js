@@ -2,7 +2,7 @@ var gulp = require('gulp'),
 	postcss = require('gulp-postcss'),
 	precss = require('precss'),
 	browserSync = require('browser-sync').create(),
- 	mainBowerFiles = require('main-bower-files'),
+	mainBowerFiles = require('main-bower-files'),
 	concat = require("gulp-concat"),
 	rename = require("gulp-rename"),
 	plumber = require('gulp-plumber'),	
@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./dist"
+            baseDir: "./builds/dev"
         }
     });
 });
@@ -22,21 +22,26 @@ gulp.task('postcss',  function() {
 	var processors = [
 			precss
 		];
-    return gulp.src(['app/css/main.css'])
-    	.pipe(plumber())
+    return gulp.src(['builds/dev/app/main.scss'])
+		.pipe(plumber())
 		.pipe(postcss(processors))
 		.pipe(notify('CSS-файлы успешно обновлены'))
-		.pipe(rename('style.css'))
-		.pipe(gulp.dest('dist/css/'));
+		.pipe(concat('app.css'))
+		.pipe(gulp.dest('builds/dev'));
 });
 
 // javascript
 gulp.task('js', function(){
 	gulp.src([
-		'builds/dev/app/**/*.js'
+			'builds/dev/app/**/*.js'
 		])
-	.pipe(concat('app.js'))
-	.pipe(gulp.dest("builds/dev"))
+		.pipe(concat('app.js'))
+		.pipe(gulp.dest("builds/dev"));
+	gulp.src([
+			'bower_components/angular/angular.js'
+		])
+	.pipe(concat('libs.js'))
+	.pipe(gulp.dest('builds/dev'))
 });
 
 // main bower files

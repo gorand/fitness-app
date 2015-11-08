@@ -17,6 +17,7 @@
     "tests"
   ],
   "devDependencies": {
-    "angular": "~1.4.7"
+    "angular": "~1.4.7",
+    "material-design-lite": "~1.0.6"
   }
 }
