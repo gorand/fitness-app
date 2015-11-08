@@ -15,12 +15,13 @@ body{
     height: auto !important;
 	height: 100%;
     margin: 0 auto;
+    padding: 0 0 $footer-height;
 }
 
 /* content */
 .content{
-	position:relative;
+	position: relative;
 	height: auto;
-    padding: 8px 18px;
+	padding: 8px 18px;
 }
 

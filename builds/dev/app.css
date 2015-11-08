@@ -2006,6 +2006,7 @@ body {
 .content {
     position: relative;
     height: auto;
+    padding: 8px 18px;
 }
 /* Typography styles */
 body {

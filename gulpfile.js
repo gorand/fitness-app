@@ -26,7 +26,7 @@ gulp.task('postcss',  function() {
         .pipe(concat('app.css'))
         .pipe(gulp.dest('builds/dev'));
     gulp.src([
-            'builds/dev/app/css/vendor/material.min.css'
+            'bower_components/material-design-lite/material.css'
         ])
         .pipe(concat('theme.css'))
         .pipe(gulp.dest('builds/dev'));
