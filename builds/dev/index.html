@@ -4,12 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Fitness</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">    
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="theme.css">
 </head>
 
 <body>
-    <div id="main">
+    <div id="main" class="mdl-layout mdl-js-layout">
+
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title">Меню</span>
+			<nav class="mdl-navigation">
+			  <a class="mdl-navigation__link" href="">Fitness</a>
+			  <a class="mdl-navigation__link" href="">О нас</a>
+			  <a class="mdl-navigation__link" href="">Личный кабинет</a>
+			</nav>
+		</div>
+
         <header class="mdl-layout__header mdl-color--yellow-600">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">
@@ -25,27 +37,27 @@
                 </nav>
             </div>
         </header>
-		<div class="mdl-layout mdl-js-layout">
-			<div class="mdl-layout__content">
-				<div class="mdl-grid">
-					<div class="sidebar mdl-cell mdl-cell--3-col mdl-cell--3-col-phone mdl-color--grey-200">
-				        <h2 class="mdl-typography--title">sidebar</h2>
-					</div>
-					<div class="content mdl-cell mdl-cell--9-col mdl-cell--9-col-phone mdl-color--grey-200">
-				        <h1 class="mdl-typography--title">Содержание</h1>
-					</div>
+
+		<div class="mdl-layout__content">
+			<div class="mdl-grid">
+				<div class="sidebar mdl-cell mdl-cell--3-col mdl-cell--3-col-phone mdl-color--grey-200">
+			        <h2 class="mdl-typography--title">sidebar</h2>
+				</div>
+				<div class="content mdl-cell mdl-cell--9-col mdl-cell--9-col-phone mdl-color--grey-200">
+			        <h1 class="mdl-typography--title">Содержание</h1>
 				</div>
 			</div>
 		</div>
 
+	    <footer class="mdl-mini-footer mdl-color--yellow-600 mdl-color-text--grey-800">
+	        <div class="mdl-mini-footer__right-section">
+	            <ul class="mdl-mini-footer__link-list">
+	                <li><a class="mdl-typography--menu" href="#">О продукте</a></li>
+	            </ul>
+	        </div>
+	    </footer>
+
     </div>
-    <footer class="mdl-mini-footer mdl-color--yellow-600 mdl-color-text--grey-800">
-        <div class="mdl-mini-footer__right-section">
-            <ul class="mdl-mini-footer__link-list">
-                <li><a class="mdl-typography--menu" href="#">О продукте</a></li>
-            </ul>
-        </div>
-    </footer>
     <script src="libs.js"></script>
     <script src="app.js"></script>
 </body>

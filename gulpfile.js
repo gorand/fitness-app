@@ -40,7 +40,8 @@ gulp.task('js', function(){
         .pipe(concat('app.js'))
         .pipe(gulp.dest("builds/dev"));
     gulp.src([
-            'bower_components/angular/angular.js'
+            'bower_components/angular/angular.js',
+            'bower_components/material-design-lite/material.js'
         ])
     .pipe(concat('libs.js'))
     .pipe(gulp.dest('builds/dev'))
@@ -49,7 +50,7 @@ gulp.task('js', function(){
 // main bower files
 gulp.task('fontsMainBower', function() {
     return gulp.src(mainBowerFiles(['**/*.eot', '**/*.svg', '**/*.ttf', '**/*.woff', '**/*.woff2', '**/*.otf']))
-        .pipe(gulp.dest('dist/css/fonts'))
+        .pipe(gulp.dest('builds/dev/fonts'))
 });
 gulp.task('cssMainBower', function() {
     return gulp.src(mainBowerFiles('**/*.css'))
