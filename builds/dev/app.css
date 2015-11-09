@@ -2016,6 +2016,9 @@ body {
     height: auto;
     padding: 8px 18px;
 }
+.ft-cell {
+    padding: 8px 12px;
+}
 /* Typography styles */
 body {
     font-family: "Roboto-Regular",Arial,Verdana,Helvetica,sans-serif;
@@ -2110,7 +2113,6 @@ p, .p {
 /* sidebar */
 .sidebar {
     padding: 8px 14px;
-    background: rgb(247, 247, 247);
     border: solid 1px rgb(220, 220, 220);
     border-radius: 2px;
 }

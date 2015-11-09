@@ -30,4 +30,8 @@ body{
 	height: auto;
     padding: 8px 18px;
 }
-
+.ft{
+    &-cell{
+        padding: 8px 12px;
+    }
+}
