@@ -72,7 +72,7 @@ gulp.task('watch', function() {
         'builds/dev/app/*.html',
         'builds/dev/app/css/*.css',
         'builds/dev/app/css/**/*.css',
-        'builds/dev/app/*.js'
+        'builds/dev/app/**/*.js'
     ], 
     ['postcss', 'js'])
    .on("change", browserSync.reload);

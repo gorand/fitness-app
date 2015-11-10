@@ -1,10 +1,10 @@
 ;(function(){
     'use strict';
     
-    console.log( 'Test!' );
     angular
         .module('fitness', [
-            'ngRoute'
+            'ngRoute',
+            'fitness.home'
         ])
         .controller('MainCtrl', MainController);
 
