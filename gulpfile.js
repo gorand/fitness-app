@@ -38,10 +38,12 @@ gulp.task('js', function(){
     gulp.src([
             'builds/dev/app/**/*.js'
         ])
+        .pipe(notify('JS-файлы успешно обновлены'))
         .pipe(concat('app.js'))
         .pipe(gulp.dest("builds/dev"));
     gulp.src([
             'bower_components/angular/angular.js',
+            'bower_components/angular-route/angular-route.js',
             'bower_components/material-design-lite/material.js'
         ])
     .pipe(concat('libs.js'))

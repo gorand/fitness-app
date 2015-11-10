@@ -3,7 +3,9 @@
     
     console.log( 'Test!' );
     angular
-        .module('fitness', [])
+        .module('fitness', [
+            'ngRoute'
+        ])
         .controller('MainCtrl', MainController);
 
     function MainController ($rootScope) {
