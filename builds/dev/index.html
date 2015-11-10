@@ -10,31 +10,28 @@
     <link rel="stylesheet" href="theme.css">
 </head>
 
-<body ng-app>
+<body ng-app="fitness">
     <div id="main" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
 
         <header class="mdl-layout__header mdl-color--red-400">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">
-    				<a class="header__logo-link" href="/" title="Fitness-app">
+				<span class="mdl-layout-title">
+					<a class="header__logo-link" href="/" title="Fitness-app">
 						<img src="/img/logo.svg" alt="Fitness" class="header__logo-img">
 					</a>
 				</span>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Войти</a>
-                </nav>
+				<div class="mdl-layout-spacer"></div>
+				<nav class="mdl-navigation">
+				    <a class="mdl-navigation__link" href="">Войти</a>
+				</nav>
             </div>
         </header>
 
 		<div class="mdl-layout__drawer">
 			<span class="mdl-layout-title">Fitness App</span>
-			<nav class="mdl-navigation">
-			  <a class="mdl-navigation__link" href="">Личный кабинет</a>
-			  <a class="mdl-navigation__link" href="">О нас</a>
-			</nav>
+			<ng-include src="'app/header/nav.html'"></ng-include>
 		</div>
+
 		<div class="mdl-layout__content">
 			<div class="mdl-grid">
 				<div class="sidebar mdl-cell mdl-cell--12-col mdl-cell--3-col-desktop mdl-color--grey-200 mdl-shadow--3dp">
@@ -54,15 +51,7 @@
 				</div>
 			</div>
 		</div>
-
-	    <footer id="footer" class="mdl-mini-footer mdl-color--red-500 mdl-color-text--yellow-500">
-	        <div class="mdl-mini-footer__right-section">
-	            <ul class="mdl-mini-footer__link-list">
-	                <li><a class="mdl-typography--menu" href="#">О продукте</a></li>
-	            </ul>
-	        </div>
-	    </footer>
-
+		<ng-include src="'app/footer/footer.html'"></ng-include>
     </div>
     <script src="libs.js"></script>
     <script src="app.js"></script>
