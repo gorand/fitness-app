@@ -6,6 +6,7 @@
       'ngRoute',
       'ui.bootstrap',
       'fitness.home',
+      'fitness.profile',
       'fitness.about'
     ])
     .controller('MainCtrl', MainController);
@@ -58,4 +59,25 @@
 				controller: 'HomeCtrl'
 			});
 	};
+})();
+;(function() {
+  'use strict'
+  angular
+    .module('fitness.profile', [
+      'ngRoute'
+    ])
+    .controller('ProfileCtrl', ProfileController)
+    .config(ProfileConfig)
+
+    function ProfileController() {
+      console.log( 'Profile Page' );
+    }
+    function ProfileConfig($routeProvider) {
+      $routeProvider
+        .when('/profile', {
+          templateUrl: 'app/profile/profile.html',
+          controller: 'ProfileCtrl'
+        });
+    }
+
 })();

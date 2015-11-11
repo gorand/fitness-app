@@ -6,6 +6,7 @@
       'ngRoute',
       'ui.bootstrap',
       'fitness.home',
+      'fitness.profile',
       'fitness.about'
     ])
     .controller('MainCtrl', MainController);
