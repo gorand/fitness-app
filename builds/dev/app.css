@@ -2124,4 +2124,28 @@ p, .p {
     color: #00B6F5;
     cursor: default;
 }
+/* footer */
+#footer {
+    position: relative;
+    height: 48px;
+    margin-top: -48px;
+    background-color: rgb(242, 242, 242);
+    border-top: solid 4px #00B6F5;
+    z-index: 1;
+    box-shadow: 0 0 2px rgba(35,35,35,0.2) inset, 
+				0 0 4px rgba(35,35,35,0.4) inset, 
+				0 0 10px rgba(35,35,35,0.5) inset;
+}
+.footer {
+    position: relative;
+    color: #4a545d;
+    font: 13px/1.35 Arial,Verdana,Helvetica,sans-serif;
+}
+.footer__info {
+    position: absolute;
+    left: 50%;
+    bottom: -42px;
+    text-align: center;
+    font-size: 15px;
+}
 
