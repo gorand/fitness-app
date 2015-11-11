@@ -1,35 +1,35 @@
 /* Typography styles */
 body {
-    font-family: $font-additional; 
-    font-size: 15px;
-    line-height: 1.35;
-    font-weight: 100;
-    font-style: normal;
+  font-family: $font-additional; 
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 100;
+  font-style: normal;
 }
 .title-h1{
-    display: inline-block;
-    margin: 0;
-    padding: 0 25px;
-    color: $black-3;
-    font: normal 34px/58px $font-additional;
-    border-bottom: solid 2px $black-4;
+  display: inline-block;
+  margin: 0;
+  padding: 0 25px;
+  color: $black-3;
+  font: normal 34px/58px $font-additional;
+  border-bottom: solid 2px $black-4;
 }
 .title-h2{
-    font: normal 22px/30px $font-additional;
+  font: normal 22px/30px $font-additional;
 }
 .title-h3{
-    font: normal 16px/24px $font-additional;
+  font: normal 16px/24px $font-additional;
 }
 @define-extend p{
-    font: normal 15px/1.35 $font-additional;
+  font: normal 15px/1.35 $font-additional;
 }
 p, .p{
-    font: normal 15px/1.35 $font-additional;
+  font: normal 15px/1.35 $font-additional;
 }
 
 /* Links in text */
 .content{
-    a{
+  a{
     font-size: 1em;
     line-height: 1.8;
     color: $base-color;
@@ -37,14 +37,13 @@ p, .p{
     transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);  
     &:hover, 
     &:focus{
-        color: $base-color-1;
-        text-decoration: none;
-        border-bottom-color: $base-color-1;
+      color: $base-color-1;
+      text-decoration: none;
+      border-bottom-color: $base-color-1;
     }
     &.is-active{
-        border-bottom: none;
-        cursor: default;
+      border-bottom: none;
+      cursor: default;
     }
   }
 }
-

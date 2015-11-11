@@ -27,7 +27,6 @@ gulp.task('postcss',  function() {
         .pipe(concat('app.css'))
         .pipe(gulp.dest('builds/dev'));
     gulp.src([
-            'bower_components/material-design-lite/material.css',
             'bower_components/angular-bootstrap/ui-bootstrap-csp.css',
             'bower_components/bootstrap/dist/css/bootstrap.css'
         ])
@@ -46,8 +45,7 @@ gulp.task('js', function(){
     gulp.src([
             'bower_components/angular/angular.js',
             'bower_components/angular-route/angular-route.js',
-            'bower_components/angular-bootstrap/ui-bootstrap.js',
-            'bower_components/material-design-lite/material.js'
+            'bower_components/angular-bootstrap/ui-bootstrap.js'
         ])
     .pipe(concat('libs.js'))
     .pipe(gulp.dest('builds/dev'))

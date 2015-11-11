@@ -2001,23 +2001,28 @@ body {
     height: auto !important;
     height: 100%;
     margin: 0 auto;
+    padding: 0 0 48px;
+}
+/*#main{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
     background: url('img/bg.jpg') 0 0 no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;    
 }
-#footer {
-    padding: 6px 28px;
-}
+*/
 /* content */
 .content {
     position: relative;
     height: auto;
     padding: 8px 18px;
-}
-.ft-cell {
-    padding: 8px 12px;
 }
 /* Typography styles */
 body {
@@ -2064,14 +2069,10 @@ p, .p {
 
 /* specific project styles */
 /* header */
-#header {
-    position: relative;
-    z-index: 10;
-    min-height: 100px;
-    margin: 0 auto;
-}
 .header {
+    margin: 0 auto;
     padding-top: 30px;
+    min-height: 100px;
 }
 .header__logo {
     font: 28px/1.35 Arial,Verdana,Helvetica,sans-serif;
@@ -2113,6 +2114,7 @@ p, .p {
 /* sidebar */
 .sidebar {
     padding: 8px 14px;
+    background: rgb(247, 247, 247);
     border: solid 1px rgb(220, 220, 220);
     border-radius: 2px;
 }
@@ -2133,8 +2135,8 @@ p, .p {
     border-top: solid 4px #00B6F5;
     z-index: 1;
     box-shadow: 0 0 2px rgba(35,35,35,0.2) inset, 
-				0 0 4px rgba(35,35,35,0.4) inset, 
-				0 0 10px rgba(35,35,35,0.5) inset;
+              0 0 4px rgba(35,35,35,0.4) inset, 
+              0 0 10px rgba(35,35,35,0.5) inset;
 }
 .footer {
     position: relative;

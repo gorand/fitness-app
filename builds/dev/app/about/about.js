@@ -1,4 +1,4 @@
 ;(function() {
-	'use strict'
-	console.log( 'About page' );
+  'use strict'
+  console.log( 'About page' );
 })();

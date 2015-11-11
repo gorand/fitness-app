@@ -1,24 +1,23 @@
 ;(function(){
-    'use strict';
-    
-    angular
-        .module('fitness', [
-            'ngRoute',
-            'fitness.home'
-        ])
-        .controller('MainCtrl', MainController);
+  'use strict';
+  
+  angular
+    .module('fitness', [
+      'ngRoute',
+      'fitness.home'
+    ])
+    .controller('MainCtrl', MainController);
 
-    function MainController ($rootScope) {
-        var that = this;
+  function MainController ($rootScope) {
+    var that = this;
 
-        $rootScope.root = 'Root 1';
-    }
-
+    $rootScope.root = 'Root 1';
+  }
 })();
 
 ;(function() {
-	'use strict'
-	console.log( 'About page' );
+  'use strict'
+  console.log( 'About page' );
 })();
 ;(function() {
 	'use strict';
