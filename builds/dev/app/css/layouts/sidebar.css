@@ -1,6 +1,6 @@
 /* sidebar */
 .sidebar{
-	padding: 8px 14px;
+	padding: 16px 10px;
 	background: color($base-background l(+3%));
 	border: solid 1px color($base-background b(15%));
 	border-radius: 2px;

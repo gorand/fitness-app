@@ -4,7 +4,9 @@
   angular
     .module('fitness', [
       'ngRoute',
-      'fitness.home'
+      'ui.bootstrap',
+      'fitness.home',
+      'fitness.about'
     ])
     .controller('MainCtrl', MainController);
 

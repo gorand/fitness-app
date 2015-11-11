@@ -1,15 +1,15 @@
 /* header */
 .header{
     margin: 0 auto;
-    padding-top: 30px;
-    min-height: 100px;
+    padding-top: 36px;
+    min-height: 120px;
 	&__logo{
         font: 28px/1.35 $font-default;
 		&-link{
 			border-bottom: none;
 		}
         &-img{
-            width: 150px;
+            width: 200px;
         }
 	}
     &__soc{

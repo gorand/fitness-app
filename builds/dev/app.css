@@ -2001,7 +2001,7 @@ body {
     height: auto !important;
     height: 100%;
     margin: 0 auto;
-    padding: 0 0 48px;
+    padding-bottom: calc(48px + 20px);
 }
 /*#main{
     position: relative;
@@ -2071,8 +2071,8 @@ p, .p {
 /* header */
 .header {
     margin: 0 auto;
-    padding-top: 30px;
-    min-height: 100px;
+    padding-top: 36px;
+    min-height: 120px;
 }
 .header__logo {
     font: 28px/1.35 Arial,Verdana,Helvetica,sans-serif;
@@ -2081,7 +2081,7 @@ p, .p {
     border-bottom: none;
 }
 .header__logo-img {
-    width: 150px;
+    width: 200px;
 }
 .header__soc {
     text-align: right;
@@ -2113,7 +2113,7 @@ p, .p {
 }
 /* sidebar */
 .sidebar {
-    padding: 8px 14px;
+    padding: 16px 10px;
     background: rgb(247, 247, 247);
     border: solid 1px rgb(220, 220, 220);
     border-radius: 2px;
@@ -2144,10 +2144,7 @@ p, .p {
     font: 13px/1.35 Arial,Verdana,Helvetica,sans-serif;
 }
 .footer__info {
-    position: absolute;
-    left: 50%;
-    bottom: -42px;
-    text-align: center;
+    margin: 12px 0;
     font-size: 15px;
 }
 

@@ -15,10 +15,7 @@
   color: #4a545d;
   font: 13px/1.35 $font-default;
   &__info{
-    position: absolute;
-    left: 50%;
-    bottom: -42px;
-    text-align: center;
+    margin: 12px 0;
     font-size: 15px;
   }
 }
