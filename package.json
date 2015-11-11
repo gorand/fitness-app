@@ -1,5 +1,5 @@
 {
-  "name": "gulp-project",
+  "name": "fitness-app",
   "version": "0.1.0",
   "description": "Build a default project",
   "devDependencies": {
@@ -12,6 +12,10 @@
     "gulp-postcss": "latest",
     "gulp-rename": "latest",
     "gulp-sass": "latest",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
     "main-bower-files": "^2.9.0",
     "postcss": "^5.0.10",
     "postcss-color-function": "^2.0.0",
