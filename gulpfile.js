@@ -37,7 +37,8 @@ gulp.task('postcss',  function() {
 // javascript
 gulp.task('js', function(){
     gulp.src([
-            'builds/dev/app/**/*.js'
+            'builds/dev/app/**/*.js',
+            '!builds/dev/app/**/*_test.js'
         ])
         .pipe(notify('JS-файлы успешно обновлены'))
         .pipe(concat('app.js'))

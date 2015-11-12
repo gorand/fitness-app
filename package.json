@@ -2,6 +2,9 @@
   "name": "fitness-app",
   "version": "0.1.0",
   "description": "Build a default project",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
   "devDependencies": {
     "browser-sync": "latest",
     "gulp": "latest",
