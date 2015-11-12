@@ -6,7 +6,14 @@
 		.config(HomeConfig);
 
 	function HomeController() {
-		console.log( 'Home controller' );
+		var that = this;
+
+		that.title = "Home Page";
+		that.name = "LoftSchool";
+		that.valuables = ['We are the best', 'We are awesome'];
+		that.addValubles = function() {
+
+		}
 	};
 
 	function HomeConfig($routeProvider) {
