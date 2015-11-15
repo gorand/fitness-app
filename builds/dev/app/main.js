@@ -7,7 +7,8 @@
       'ui.bootstrap',
       'fitness.home',
       'fitness.profile',
-      'fitness.about'
+      'fitness.about',
+      'fitness.users'
     ])
     .controller('MainCtrl', MainController);
 
