@@ -1197,7 +1197,7 @@
 
       var person = [];
       angular.forEach(listJson, function(item){
-        var date = (new Date(item.registered)).getTime();
+        var date = +new Date(item.registered);
         item.registered = date;
         person.push(item);
       });
