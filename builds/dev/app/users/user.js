@@ -1099,13 +1099,14 @@
       'ngRoute'
     ])
     .controller('UserCtrl', UserController)
-    .config(UserConfig);
+    .config(UserConfig)
+    .filter('since', FromTime);
 
     function UserController() {
       var sc = this;
       var person = [];
       sc.now = +new Date();
-      
+
       angular.forEach(listJson, function(item){
         var date = +new Date(item.registered);
         item.registered = date;
@@ -1115,7 +1116,6 @@
       sc.users = person;
     }
 
-
     function UserConfig($routeProvider) {
       $routeProvider
         .when( '/users', {
@@ -1124,4 +1124,19 @@
           controllerAs: 'uc'
         });
     }
+
+    function FromTime(){
+      return function(date){
+        var
+          result,
+          now = +new Date(),
+          diff = (now - date)/1000
+        
+        if(date < now){
+          console.log( diff );  
+        }
+        return date;
+      }
+    }
+
 })();
