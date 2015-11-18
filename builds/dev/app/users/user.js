@@ -1105,7 +1105,6 @@
     function UserController() {
       var sc = this;
       var person = [];
-      sc.now = +new Date();
 
       angular.forEach(listJson, function(item){
         var date = +new Date(item.registered);
@@ -1128,14 +1127,33 @@
     function FromTime(){
       return function(date){
         var
-          result,
+          msg,
           now = +new Date(),
-          diff = (now - date)/1000
+          diff = (now - date)/1000,
+          min = 60,
+          hour = 60*min,
+          day = 24*hour,
+          month = 30*day,
+          threeMonths = 90*day,
+          sixMonths = 180*day,
+          year = 365*day;
         
-        if(date < now){
-          console.log( diff );  
-        }
-        return date;
+        if(diff < min)
+          msg = "только что";
+        else if(diff > min && diff < hour)
+          msg = "в течение часа";
+        else if(diff > hour && diff < day)
+          msg = "более суток назад";
+        else if(diff > day && diff < month)
+          msg = "больше, чем месяц назад";
+        else if(diff > month && diff < threeMonths)
+          msg = "более 3 месяцев назад";
+        else if(diff > threeMonths && diff < sixMonths)
+          msg = "более полугода";
+        else
+          msg = "больше года назад";
+
+        return msg;
       }
     }
 
