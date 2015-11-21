@@ -5,6 +5,7 @@
 		.controller('HomeCtrl', HomeController)
 		.config(HomeConfig);
 
+  // @ngInject
 	function HomeController() {
 		var that = this;
 
@@ -16,6 +17,7 @@
 		}
 	};
 
+  // @ngInject
 	function HomeConfig($routeProvider) {
 		console.log( 'Home config!' );
 		$routeProvider

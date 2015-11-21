@@ -12,6 +12,7 @@
     ])
     .controller('MainCtrl', MainController);
 
+  // @ngInject
   function MainController ($rootScope) {
     var that = this;
 

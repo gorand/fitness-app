@@ -7,15 +7,18 @@
     .controller('ProfileCtrl', ProfileController)
     .config(ProfileConfig)
 
-    function ProfileController() {
-      console.log( 'Profile Page' );
-    }
-    function ProfileConfig($routeProvider) {
-      $routeProvider
-        .when('/profile', {
-          templateUrl: 'app/profile/profile.html',
-          controller: 'ProfileCtrl'
-        });
-    }
+  // @ngInject
+  function ProfileController() {
+    console.log( 'Profile Page' );
+  }
+
+  // @ngInject
+  function ProfileConfig($routeProvider) {
+    $routeProvider
+      .when('/profile', {
+        templateUrl: 'app/profile/profile.html',
+        controller: 'ProfileCtrl'
+      });
+  }
 
 })();
