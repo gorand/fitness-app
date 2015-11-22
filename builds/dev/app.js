@@ -10,6 +10,7 @@
       'fitness.about',
       'fitness.users'
     ])
+    .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController);
 
   // @ngInject
@@ -40,6 +41,24 @@
           controller: 'AboutCtrl'
         });
     }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.dbc', [
+      'firebase'
+    ])
+    .factory('dbc', dbcFactory)
+
+  // @ngInject
+  function dbcFactory(FDBURL, $firebaseAuth) {
+    var fc = {};
+    var ref = new Firebase(FDBURL);
+
+    return fc;
+  }
 
 })();
 ;(function() {

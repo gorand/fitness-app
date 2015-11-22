@@ -10,6 +10,7 @@
       'fitness.about',
       'fitness.users'
     ])
+    .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController);
 
   // @ngInject
