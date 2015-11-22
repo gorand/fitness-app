@@ -1194,9 +1194,19 @@
     .module('fitness.users', [
       'ngRoute'
     ])
+    .factory('users', UserFactory)
     .controller('UserCtrl', UserController)
     .config(UserConfig)
     .filter('since', FromTime);
+
+  // @ngInject
+  function UserFactory($q, $http) {
+    var fc = {};
+
+    var users = null;
+    
+    return fc;
+  }
 
   // @ngInject
   function UserController() {
