@@ -21,6 +21,8 @@
     "material-design-lite": "~1.0.6",
     "angular-route": "~1.4.7",
     "angular-bootstrap": "~0.14.3",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "firebase": "~2.3.2",
+    "angularfire": "~1.1.3"
   }
 }

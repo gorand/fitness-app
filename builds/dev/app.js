@@ -1213,18 +1213,32 @@
     .module('fitness.users', [
       'ngRoute'
     ])
-    .factory('users', UserFactory)
+    .factory('persons', UserFactory)
     .controller('UserCtrl', UserController)
+    .controller('PersonCtrl', PersonController)
     .config(UserConfig)
     .filter('since', FromTime);
 
   // @ngInject
-  function UserFactory($q, $http) {
+  function UserFactory() {
     var fc = {};
 
-    var users = null;
-    
+    var persons = null;
+
+    fc.getPersons = function(){
+
+    };
+ 
     return fc;
+  }
+
+  function PersonController(persons) {
+    var sc = this;
+
+    sc.persons = [];
+    // persons.getPersons().then(function(_data) {
+    //   sc.persons = _data;
+    // });
   }
 
   // @ngInject
@@ -1248,6 +1262,10 @@
         templateUrl: 'app/users/list_users.html',
         controller: 'UserCtrl',
         controllerAs: 'uc'
+      })
+      .when( '/persons', {
+        templateUrl: 'app/users/list_users.html',
+        controller: 'PersonCtrl'
       });
   }
 

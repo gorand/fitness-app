@@ -46,7 +46,9 @@ gulp.task('js', function(){
     gulp.src([
             'bower_components/angular/angular.js',
             'bower_components/angular-route/angular-route.js',
-            'bower_components/angular-bootstrap/ui-bootstrap.js'
+            'bower_components/angular-bootstrap/ui-bootstrap.js',
+            'bower_components/firebase/firebase.js',
+            'bower_components/angularfire/dist/angularfire.js'
         ])
     .pipe(concat('libs.js'))
     .pipe(gulp.dest('builds/dev'))
