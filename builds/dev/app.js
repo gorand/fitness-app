@@ -57,6 +57,10 @@
     var fc = {};
     var ref = new Firebase(FDBURL);
 
+    fc.getRef = function(){
+      return ref;
+    }
+
     return fc;
   }
 
@@ -1211,7 +1215,8 @@
 
   angular
     .module('fitness.users', [
-      'ngRoute'
+      'ngRoute',
+      'fitness.dbc'
     ])
     .factory('persons', UserFactory)
     .controller('UserCtrl', UserController)
@@ -1232,9 +1237,12 @@
     return fc;
   }
 
-  function PersonController(persons) {
+  function PersonController(persons, dbc) {
     var sc = this;
 
+    var ref = dbc.getRef();
+
+    console.log( ref );
     sc.persons = [];
     // persons.getPersons().then(function(_data) {
     //   sc.persons = _data;
