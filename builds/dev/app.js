@@ -8,7 +8,8 @@
       'fitness.home',
       'fitness.profile',
       'fitness.about',
-      'fitness.users'
+      'fitness.users',
+      'fitness.members'
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController);
@@ -118,6 +119,71 @@
   }
 
 })();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.members', [
+      'fitness.dbc'
+    ])
+    .config(memberConfig)
+
+    //ngIngect
+    function memberConfig($routeProvider) {
+      $routeProvider
+        .when( '/members', {
+          templateUrl: 'app/users/members.html',
+          controller: 'MemberCtrl',
+          controllerAs: 'mc'
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.members')
+    .controller('MemberCtrl', MemberController)
+  
+     function MemberController(members) {
+      var sc = this;
+      sc.members = [];
+      members.getMembers().then(function(_data) {
+        sc.members = _data;
+        console.log( _data );
+      });
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.members')
+    .factory('members', MemberFactory)
+  
+  // @ngInject
+  function MemberFactory(dbc, $firebaseArray) {
+    var fc = {};
+    var ref = dbc.getRef();
+    var usersRef = ref.child('users');
+
+    var members = null;
+
+    fc.getMembers = function(){
+      return $firebaseArray(usersRef).$loaded(function(_d){
+        // console.log(_d);
+        return _d;
+      });
+    };
+ 
+    return fc;
+  }
+
+})();
+
 ;(function() {
   'use strict';
 
@@ -1225,28 +1291,31 @@
     .filter('since', FromTime);
 
   // @ngInject
-  function UserFactory() {
+  function UserFactory(dbc, $firebaseArray) {
     var fc = {};
+    var ref = dbc.getRef();
+    var usersRef = ref.child('users')    
 
     var persons = null;
 
     fc.getPersons = function(){
-
+      return $firebaseArray(usersRef).$loaded(function(_d){
+        // console.log(_d);
+        return _d;
+      });
     };
  
     return fc;
   }
 
-  function PersonController(persons, dbc) {
+  function PersonController(persons) {
     var sc = this;
 
-    var ref = dbc.getRef();
-
-    console.log( ref );
     sc.persons = [];
-    // persons.getPersons().then(function(_data) {
-    //   sc.persons = _data;
-    // });
+    persons.getPersons().then(function(_data) {
+      sc.persons = _data;
+      console.log( _data );
+    });
   }
 
   // @ngInject
@@ -1271,10 +1340,6 @@
         controller: 'UserCtrl',
         controllerAs: 'uc'
       })
-      .when( '/persons', {
-        templateUrl: 'app/users/list_users.html',
-        controller: 'PersonCtrl'
-      });
   }
 
   // @ngInject

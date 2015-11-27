@@ -1105,28 +1105,31 @@
     .filter('since', FromTime);
 
   // @ngInject
-  function UserFactory() {
+  function UserFactory(dbc, $firebaseArray) {
     var fc = {};
+    var ref = dbc.getRef();
+    var usersRef = ref.child('users')    
 
     var persons = null;
 
     fc.getPersons = function(){
-
+      return $firebaseArray(usersRef).$loaded(function(_d){
+        // console.log(_d);
+        return _d;
+      });
     };
  
     return fc;
   }
 
-  function PersonController(persons, dbc) {
+  function PersonController(persons) {
     var sc = this;
 
-    var ref = dbc.getRef();
-
-    console.log( ref );
     sc.persons = [];
-    // persons.getPersons().then(function(_data) {
-    //   sc.persons = _data;
-    // });
+    persons.getPersons().then(function(_data) {
+      sc.persons = _data;
+      console.log( _data );
+    });
   }
 
   // @ngInject
@@ -1151,10 +1154,6 @@
         controller: 'UserCtrl',
         controllerAs: 'uc'
       })
-      .when( '/persons', {
-        templateUrl: 'app/users/list_users.html',
-        controller: 'PersonCtrl'
-      });
   }
 
   // @ngInject
