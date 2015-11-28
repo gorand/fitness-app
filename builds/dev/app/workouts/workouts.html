@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Список тренировок</h1>
+  <table class="table">
+    <tr>
+      <th>Название</th>
+      <th>Тип тренировки</th>
+      <th>Тип</th>
+    </tr>
+    <tr ng-repeat="workout in wc.workouts">
+      <td> {{ workout.name }} </td>
+      <td> {{ workout.type }} </td>
+      <td> {{ workout.typeWorkouts }} </td>
+    </tr>
+  </table>
+</div>
+

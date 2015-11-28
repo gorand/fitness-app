@@ -9,7 +9,8 @@
       'fitness.profile',
       'fitness.about',
       'fitness.users',
-      'fitness.members'
+      'fitness.members',
+      'fitness.workouts'
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController);
@@ -1374,6 +1375,69 @@
 
       return msg;
     }
+  }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts', [
+      'fitness.dbc'
+    ])
+    .config(workoutConfig)
+
+    //ngIngect
+    function workoutConfig($routeProvider) {
+      $routeProvider
+        .when( '/workouts', {
+          templateUrl: 'app/workouts/workouts.html',
+          controller: 'WorkoutCtrl',
+          controllerAs: 'wc'
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts')
+    .controller('WorkoutCtrl', WorkoutController)
+  
+     function WorkoutController(workouts) {
+      var sc = this;
+      sc.workouts = [];
+      workouts.getWorkouts().then(function(_data) {
+        console.log( _data );
+        sc.workouts = _data;
+      });
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts')
+    .factory('workouts', WorkoutFactory)
+  
+  // @ngInject
+  function WorkoutFactory(dbc, $firebaseArray) {
+    var fc = {};
+    var ref = dbc.getRef();
+    var workotsRef = ref.child('workout');
+
+    var workouts = null;
+
+    fc.getWorkouts = function(){
+      return $firebaseArray(workotsRef).$loaded(function(_d){
+        return _d;
+      });
+    };
+ 
+    return fc;
   }
 
 })();
