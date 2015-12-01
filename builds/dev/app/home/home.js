@@ -18,12 +18,14 @@
 	};
 
   // @ngInject
-	function HomeConfig($routeProvider) {
+	function HomeConfig($stateProvider) {
 		console.log( 'Home config!' );
-		$routeProvider
-			.when('/', {
+		$stateProvider
+			.state('home', {
+				url: '/',
 				templateUrl: 'app/home/home.html',
-				controller: 'HomeCtrl'
+				controller: 'HomeCtrl',
+				controllerAs: 'hc'
 			});
 	};
 })();

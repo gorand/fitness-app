@@ -1095,7 +1095,6 @@
 
   angular
     .module('fitness.users', [
-      'ngRoute',
       'fitness.dbc'
     ])
     .factory('persons', UserFactory)
@@ -1147,9 +1146,10 @@
   }
 
   // @ngInject
-  function UserConfig($routeProvider) {
-    $routeProvider
-      .when( '/users', {
+  function UserConfig($stateProvider) {
+    $stateProvider
+      .state( 'users', {
+        url: '/users',
         templateUrl: 'app/users/list_users.html',
         controller: 'UserCtrl',
         controllerAs: 'uc'

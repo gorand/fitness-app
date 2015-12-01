@@ -3,7 +3,7 @@
   
   angular
     .module('fitness', [
-      'ngRoute',
+      'ui.router',
       'ui.bootstrap',
       'fitness.home',
       'fitness.profile',
@@ -13,7 +13,9 @@
       'fitness.workouts'
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
-    .controller('MainCtrl', MainController);
+    .controller('MainCtrl', MainController)
+    .config(MainConfig);
+
 
   // @ngInject
   function MainController ($rootScope) {
@@ -21,4 +23,9 @@
 
     $rootScope.root = 'Root 1';
   }
+  // @ngInject
+  function MainConfig($urlRouterProvider){
+    $urlRouterProvider.otherwise('/');
+  }
+
 })();

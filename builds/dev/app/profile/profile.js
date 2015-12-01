@@ -1,9 +1,7 @@
 ;(function() {
   'use strict'
   angular
-    .module('fitness.profile', [
-      'ngRoute'
-    ])
+    .module('fitness.profile', [])
     .controller('ProfileCtrl', ProfileController)
     .config(ProfileConfig)
 
@@ -13,9 +11,10 @@
   }
 
   // @ngInject
-  function ProfileConfig($routeProvider) {
-    $routeProvider
-      .when('/profile', {
+  function ProfileConfig($stateProvider) {
+    $stateProvider
+      .state('profile', {
+        url: '/profile',
         templateUrl: 'app/profile/profile.html',
         controller: 'ProfileCtrl'
       });

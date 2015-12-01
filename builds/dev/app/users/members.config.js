@@ -8,9 +8,10 @@
     .config(memberConfig)
 
     //ngIngect
-    function memberConfig($routeProvider) {
-      $routeProvider
-        .when( '/members', {
+    function memberConfig($stateProvider) {
+      $stateProvider
+        .state( 'members', {
+          url: '/members',
           templateUrl: 'app/users/members.html',
           controller: 'MemberCtrl',
           controllerAs: 'mc'

@@ -8,9 +8,10 @@
     .config(workoutConfig)
 
     //ngIngect
-    function workoutConfig($routeProvider) {
-      $routeProvider
-        .when( '/workouts', {
+    function workoutConfig($stateProvider) {
+      $stateProvider
+        .state( 'workouts', {
+          url: '/workouts',
           templateUrl: 'app/workouts/workouts.html',
           controller: 'WorkoutCtrl',
           controllerAs: 'wc'

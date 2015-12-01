@@ -3,7 +3,7 @@
   
   angular
     .module('fitness', [
-      'ngRoute',
+      'ui.router',
       'ui.bootstrap',
       'fitness.home',
       'fitness.profile',
@@ -13,7 +13,9 @@
       'fitness.workouts'
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
-    .controller('MainCtrl', MainController);
+    .controller('MainCtrl', MainController)
+    .config(MainConfig);
+
 
   // @ngInject
   function MainController ($rootScope) {
@@ -21,24 +23,28 @@
 
     $rootScope.root = 'Root 1';
   }
+  // @ngInject
+  function MainConfig($urlRouterProvider){
+    $urlRouterProvider.otherwise('/');
+  }
+
 })();
 
 ;(function() {
   'use strict'
   angular
-    .module('fitness.about', [
-      'ngRoute'
-    ])
+    .module('fitness.about', [])
     .controller('AboutCtrl', AboutController)
     .config(AboutConfig)
 
     function AboutController() {
       console.log( 'About Page' );
     }
-    function AboutConfig($routeProvider) {
+    function AboutConfig($stateProvider) {
       console.log( 'AboutConfig' );
-      $routeProvider
-        .when('/about', {
+      $stateProvider
+        .state('about', {
+          url: '/about',
           templateUrl: 'app/about/about.html',
           controller: 'AboutCtrl'
         });
@@ -87,21 +93,21 @@
 	};
 
   // @ngInject
-	function HomeConfig($routeProvider) {
+	function HomeConfig($stateProvider) {
 		console.log( 'Home config!' );
-		$routeProvider
-			.when('/', {
+		$stateProvider
+			.state('home', {
+				url: '/',
 				templateUrl: 'app/home/home.html',
-				controller: 'HomeCtrl'
+				controller: 'HomeCtrl',
+				controllerAs: 'hc'
 			});
 	};
 })();
 ;(function() {
   'use strict'
   angular
-    .module('fitness.profile', [
-      'ngRoute'
-    ])
+    .module('fitness.profile', [])
     .controller('ProfileCtrl', ProfileController)
     .config(ProfileConfig)
 
@@ -111,9 +117,10 @@
   }
 
   // @ngInject
-  function ProfileConfig($routeProvider) {
-    $routeProvider
-      .when('/profile', {
+  function ProfileConfig($stateProvider) {
+    $stateProvider
+      .state('profile', {
+        url: '/profile',
         templateUrl: 'app/profile/profile.html',
         controller: 'ProfileCtrl'
       });
@@ -130,9 +137,10 @@
     .config(memberConfig)
 
     //ngIngect
-    function memberConfig($routeProvider) {
-      $routeProvider
-        .when( '/members', {
+    function memberConfig($stateProvider) {
+      $stateProvider
+        .state( 'members', {
+          url: '/members',
           templateUrl: 'app/users/members.html',
           controller: 'MemberCtrl',
           controllerAs: 'mc'
@@ -1282,7 +1290,6 @@
 
   angular
     .module('fitness.users', [
-      'ngRoute',
       'fitness.dbc'
     ])
     .factory('persons', UserFactory)
@@ -1334,9 +1341,10 @@
   }
 
   // @ngInject
-  function UserConfig($routeProvider) {
-    $routeProvider
-      .when( '/users', {
+  function UserConfig($stateProvider) {
+    $stateProvider
+      .state( 'users', {
+        url: '/users',
         templateUrl: 'app/users/list_users.html',
         controller: 'UserCtrl',
         controllerAs: 'uc'
@@ -1388,9 +1396,10 @@
     .config(workoutConfig)
 
     //ngIngect
-    function workoutConfig($routeProvider) {
-      $routeProvider
-        .when( '/workouts', {
+    function workoutConfig($stateProvider) {
+      $stateProvider
+        .state( 'workouts', {
+          url: '/workouts',
           templateUrl: 'app/workouts/workouts.html',
           controller: 'WorkoutCtrl',
           controllerAs: 'wc'
