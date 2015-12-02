@@ -10,7 +10,8 @@
       'fitness.about',
       'fitness.users',
       'fitness.members',
-      'fitness.workouts'
+      'fitness.workouts',
+      'fitness.login'
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController)
@@ -104,6 +105,68 @@
 			});
 	};
 })();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.login', [
+      'fitness.dbc'
+    ])
+    .config(loginConfig)
+
+    //ngIngect
+    function loginConfig($stateProvider) {
+      $stateProvider
+        .state( 'login', {
+          url: '/signup',
+          templateUrl: 'app/login/signup.html',
+          controller: 'LoginCtrl',
+          controllerAs: 'lc'
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.login')
+    .controller('LoginCtrl', LoginController)
+  
+     function LoginController(registration) {
+      var sc = this;
+
+      sc.signinUser = {
+        email: null,
+        password: null
+      };
+
+      sc.signupUser = {
+        email: null,
+        password: null,
+        name: null,
+        surname: null
+      };
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.login')
+    .factory('registration', LoginFactory)
+  
+  // @ngInject
+  function LoginFactory(dbc, $firebaseObject) {
+    var fc = {};
+    
+    return fc;
+  }
+
+})();
+
 ;(function() {
   'use strict'
   angular

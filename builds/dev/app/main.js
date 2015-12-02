@@ -10,7 +10,8 @@
       'fitness.about',
       'fitness.users',
       'fitness.members',
-      'fitness.workouts'
+      'fitness.workouts',
+      'fitness.login'
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController)
