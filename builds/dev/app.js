@@ -8,6 +8,7 @@
       'fitness.home',
       'fitness.profile',
       'fitness.about',
+      'fitness.persons',
       'fitness.users',
       'fitness.members',
       'fitness.workouts',
@@ -204,7 +205,7 @@
       $stateProvider
         .state( 'members', {
           url: '/members',
-          templateUrl: 'app/users/members.html',
+          templateUrl: 'app/members/members.html',
           controller: 'MemberCtrl',
           controllerAs: 'mc'
         });
@@ -248,6 +249,72 @@
       return $firebaseArray(usersRef).$loaded(function(_d){
         // console.log(_d);
         return _d;
+      });
+    };
+ 
+    return fc;
+  }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.users', [
+      'fitness.dbc'
+    ])
+    .config(userConfig)
+
+    //ngIngect
+    function userConfig($stateProvider) {
+      $stateProvider
+        .state( 'users', {
+          url: '/users',
+          templateUrl: 'app/users/users.html',
+          controller: 'UserCtrl',
+          controllerAs: 'uc'
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.users')
+    .controller('UserCtrl', UserController)
+  
+     function UserController(users) {
+      var sc = this;
+      sc.users = [];
+      users.getUsers().then(function(_data) {
+        sc.users = _data;
+        console.log( _data );
+      });
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.users')
+    .factory('users', UserFactory)
+  
+  // @ngInject
+  function UserFactory(dbc, $firebaseArray) {
+    var fc = {};
+    var ref = dbc.getRef();
+    var usersRef = ref.child('users');
+
+    var users = null;
+
+    fc.getUsers = function(){
+      return $firebaseArray(usersRef).$loaded(function(_data){
+        // console.log(_data);
+        return _data;
       });
     };
  
@@ -1352,7 +1419,7 @@
   ];
 
   angular
-    .module('fitness.users', [
+    .module('fitness.persons', [
       'fitness.dbc'
     ])
     .factory('persons', UserFactory)
@@ -1406,8 +1473,8 @@
   // @ngInject
   function UserConfig($stateProvider) {
     $stateProvider
-      .state( 'users', {
-        url: '/users',
+      .state( 'users_list', {
+        url: '/users_list',
         templateUrl: 'app/users/list_users.html',
         controller: 'UserCtrl',
         controllerAs: 'uc'

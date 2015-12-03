@@ -12,7 +12,7 @@
       $stateProvider
         .state( 'members', {
           url: '/members',
-          templateUrl: 'app/users/members.html',
+          templateUrl: 'app/members/members.html',
           controller: 'MemberCtrl',
           controllerAs: 'mc'
         });

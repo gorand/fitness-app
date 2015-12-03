@@ -1094,7 +1094,7 @@
   ];
 
   angular
-    .module('fitness.users', [
+    .module('fitness.persons', [
       'fitness.dbc'
     ])
     .factory('persons', UserFactory)
@@ -1148,8 +1148,8 @@
   // @ngInject
   function UserConfig($stateProvider) {
     $stateProvider
-      .state( 'users', {
-        url: '/users',
+      .state( 'users_list', {
+        url: '/users_list',
         templateUrl: 'app/users/list_users.html',
         controller: 'UserCtrl',
         controllerAs: 'uc'

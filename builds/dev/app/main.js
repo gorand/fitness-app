@@ -8,6 +8,7 @@
       'fitness.home',
       'fitness.profile',
       'fitness.about',
+      'fitness.persons',
       'fitness.users',
       'fitness.members',
       'fitness.workouts',
