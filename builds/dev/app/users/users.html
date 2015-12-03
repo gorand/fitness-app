@@ -1,5 +1,20 @@
 <div class="container">
-  <h1>Посетители фитнес-зала</h1>
+  <h1>Информация о пользователе</h1>
+  <form ng-show name="edtiUser" >
+    <div class="form-group">
+      <label for="nameEdit">Имя</label>
+      <input type="text" class="form-control" id="nameEdit" placeholder="Имя" ng-model="uc.editingUser.name">
+    </div>
+    <div class="form-group">
+      <label for="surnameEdit">Фамилия</label>
+      <input type="text" class="form-control" id="surnameEdit" placeholder="Фамилия" ng-model="uc.editingUser.surname">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success" ng-click="uc.saveUser()">Сохранить</button> 
+      <button type="submit" class="btn btn-default" ng-click="uc.cancelEditUser()">Cancel</button> 
+      <button type="submit" class="btn btn-danger pull-right" ng-click="uc.removeUser()">Delete</button>
+    </div>
+  </form>
   <table class="table">
     <tr>
       <th>ID</th>
@@ -15,7 +30,6 @@
       <td> <img ng-src="{{ user.picture }}" alt="{{ user.name }}">  </td>
       <td> {{ user.registered }} </td>
     </tr>
-
   </table>
 </div>
 
