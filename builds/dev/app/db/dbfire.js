@@ -11,9 +11,14 @@
   function dbcFactory(FDBURL, $firebaseAuth) {
     var fc = {};
     var ref = new Firebase(FDBURL);
+    var auth = $firebaseAuth(ref);
 
-    fc.getRef = function(){
+    fc.getRef = function() {
       return ref;
+    }
+
+    fc.get$Auth = function() {
+      return auth;
     }
 
     return fc;

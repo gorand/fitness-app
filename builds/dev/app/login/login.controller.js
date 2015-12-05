@@ -19,6 +19,17 @@
         name: null,
         surname: null
       };
+
+      sc.testClick = function() {
+        registration.test(sc.signupUser);
+      }
+
+      sc.signUp = function() {
+        console.log( "Press button SignUp" );
+        registration.signup(sc.signupUser).then(function(){
+            console.log( sc.signupUser.name );
+        })
+      }      
     }
 
 })();
