@@ -47,32 +47,10 @@
       return auth.$authWithPassword(_user);
     }
 
-    fc.signinGoogle = function(){
-      return auth.$authWithOAuthPopup("google").then(function(authData) {
-        var userRef = dbc.getRef().child('users').child(authData.uid);
-        var userObj = $firebaseObject(userRef);
-        userObj.$loaded(function(_d){
-          console.log('user Object', _d);
-          if(_d.registered){
-            userObj.last_visit = Firebase.ServerValue.TIMESTAMP;
-          }else{
-            userObj.last_visit = Firebase.ServerValue.TIMESTAMP;
-            userObj.name = authData.google.cachedUserProfile.given_name || "";
-            userObj.surname = authData.google.cachedUserProfile.family_name || "";
-            userObj.google_id = authData.google.id;
-            userObj.registered = userObj.registered ? userObj.registered : Firebase.ServerValue.TIMESTAMP;
-          }
-          userObj.$save();
-          console.log('save', +(new Date()));
-        });
-        console.log("Logged in as:", authData);
-      }).catch(function(error) {
-        console.error("Authentication failed:", error);
-      });
-    };
-
     fc.test = function(_user) {
-      console.log( _user);
+      console.log( _user ).then(function(){
+         console.log( _user );
+      });
     }
 
     fc.signup = function(_user){
