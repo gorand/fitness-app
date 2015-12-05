@@ -48,9 +48,7 @@
     }
 
     fc.test = function(_user) {
-      console.log( _user ).then(function(){
-         console.log( _user );
-      });
+        console.log( _user );
     }
 
     fc.signup = function(_user){

@@ -20,10 +20,14 @@
         surname: null
       };
 
-      sc.testClick = function() {
-        registration.test(sc.signupUser).then(function(){
+      sc.signIn = function() {
+        registration.signin(sc.signinUser).then(function(){
 
         });
+      }
+
+      sc.testClick = function() {
+        registration.test(sc.signinUser);
       }
 
       sc.signUp = function() {

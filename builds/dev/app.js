@@ -123,9 +123,15 @@
     //ngIngect
     function loginConfig($stateProvider) {
       $stateProvider
-        .state( 'login', {
+        .state( 'signup', {
           url: '/signup',
           templateUrl: 'app/login/signup.html',
+          controller: 'LoginCtrl',
+          controllerAs: 'lc'
+        })
+        .state( 'signin', {
+          url: '/signin',
+          templateUrl: 'app/login/signin.html',
           controller: 'LoginCtrl',
           controllerAs: 'lc'
         });
@@ -154,10 +160,14 @@
         surname: null
       };
 
-      sc.testClick = function() {
-        registration.test(sc.signupUser).then(function(){
+      sc.signIn = function() {
+        registration.signin(sc.signinUser).then(function(){
 
         });
+      }
+
+      sc.testClick = function() {
+        registration.test(sc.signinUser);
       }
 
       sc.signUp = function() {
@@ -220,9 +230,7 @@
     }
 
     fc.test = function(_user) {
-      console.log( _user ).then(function(){
-         console.log( _user );
-      });
+        console.log( _user );
     }
 
     fc.signup = function(_user){
