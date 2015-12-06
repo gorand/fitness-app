@@ -15,19 +15,19 @@
       auth.$unauth();
     };
 
-    auth.$onAuth(function(authData){
-      if (authData) {// Logged in
-        console.log('$onAuth: Logged in ', authData);
-        users.getUser(authData.uid).then(function(_user){
+    auth.$onAuth(function(authDataFire){
+      if (authDataFire) {// Logged in
+        console.log('$onAuth: Logged in ', authDataFire);
+        users.getUser(authDataFire.uid).then(function(_user){
           console.log('onAuth', +(new Date()));
           $rootScope.currentUser = {
-            uid: authData.uid,
+            uid: authDataFire.uid,
             loggedIn: true,
             fullname: _user.name + ' ' + _user.surname
           };
           _user.$watch(function(){
             $rootScope.currentUser = {
-              uid: authData.uid,
+              uid: authDataFire.uid,
               loggedIn: true,
               fullname: _user.name + ' ' + _user.surname
             };

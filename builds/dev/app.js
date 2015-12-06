@@ -16,18 +16,27 @@
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController)
+    .run(MainRun)
     .config(MainConfig);
 
-
   // @ngInject
-  function MainController ($rootScope) {
+  function MainController($rootScope) {
     var that = this;
 
     $rootScope.root = 'Root 1';
   }
+  
   // @ngInject
-  function MainConfig($urlRouterProvider){
+  function MainConfig($urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
+  }
+
+  // @ngInject
+  function MainRun($rootScope, dbc) {
+    $rootScope.logout = function() {
+      console.log( 'logout' );
+      dbc.get$Auth.$unauth();
+    };
   }
 
 })();
@@ -197,19 +206,19 @@
       auth.$unauth();
     };
 
-    auth.$onAuth(function(authData){
-      if (authData) {// Logged in
-        console.log('$onAuth: Logged in ', authData);
-        users.getUser(authData.uid).then(function(_user){
+    auth.$onAuth(function(authDataFire){
+      if (authDataFire) {// Logged in
+        console.log('$onAuth: Logged in ', authDataFire);
+        users.getUser(authDataFire.uid).then(function(_user){
           console.log('onAuth', +(new Date()));
           $rootScope.currentUser = {
-            uid: authData.uid,
+            uid: authDataFire.uid,
             loggedIn: true,
             fullname: _user.name + ' ' + _user.surname
           };
           _user.$watch(function(){
             $rootScope.currentUser = {
-              uid: authData.uid,
+              uid: authDataFire.uid,
               loggedIn: true,
               fullname: _user.name + ' ' + _user.surname
             };
@@ -348,6 +357,71 @@
   }
 
 })();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts', [
+      'fitness.dbc'
+    ])
+    .config(workoutConfig)
+
+    //ngIngect
+    function workoutConfig($stateProvider) {
+      $stateProvider
+        .state( 'workouts', {
+          url: '/workouts',
+          templateUrl: 'app/workouts/workouts.html',
+          controller: 'WorkoutCtrl',
+          controllerAs: 'wc'
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts')
+    .controller('WorkoutCtrl', WorkoutController)
+  
+     function WorkoutController(workouts) {
+      var sc = this;
+      sc.workouts = [];
+      workouts.getWorkouts().then(function(_data) {
+        console.log( _data );
+        sc.workouts = _data;
+      });
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts')
+    .factory('workouts', WorkoutFactory)
+  
+  // @ngInject
+  function WorkoutFactory(dbc, $firebaseArray) {
+    var fc = {};
+    var ref = dbc.getRef();
+    var workotsRef = ref.child('workout');
+
+    var workouts = null;
+
+    fc.getWorkouts = function(){
+      return $firebaseArray(workotsRef).$loaded(function(_d){
+        return _d;
+      });
+    };
+ 
+    return fc;
+  }
+
+})();
+
 ;(function(){
   'use strict';
 
@@ -1616,70 +1690,6 @@
 
       return msg;
     }
-  }
-
-})();
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.workouts', [
-      'fitness.dbc'
-    ])
-    .config(workoutConfig)
-
-    //ngIngect
-    function workoutConfig($stateProvider) {
-      $stateProvider
-        .state( 'workouts', {
-          url: '/workouts',
-          templateUrl: 'app/workouts/workouts.html',
-          controller: 'WorkoutCtrl',
-          controllerAs: 'wc'
-        });
-      }
-
-})();
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.workouts')
-    .controller('WorkoutCtrl', WorkoutController)
-  
-     function WorkoutController(workouts) {
-      var sc = this;
-      sc.workouts = [];
-      workouts.getWorkouts().then(function(_data) {
-        console.log( _data );
-        sc.workouts = _data;
-      });
-    }
-
-})();
-
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.workouts')
-    .factory('workouts', WorkoutFactory)
-  
-  // @ngInject
-  function WorkoutFactory(dbc, $firebaseArray) {
-    var fc = {};
-    var ref = dbc.getRef();
-    var workotsRef = ref.child('workout');
-
-    var workouts = null;
-
-    fc.getWorkouts = function(){
-      return $firebaseArray(workotsRef).$loaded(function(_d){
-        return _d;
-      });
-    };
- 
-    return fc;
   }
 
 })();

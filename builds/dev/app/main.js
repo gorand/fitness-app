@@ -16,18 +16,27 @@
     ])
     .constant('FDBURL', 'https://basecontacts.firebaseio.com/')
     .controller('MainCtrl', MainController)
+    .run(MainRun)
     .config(MainConfig);
 
-
   // @ngInject
-  function MainController ($rootScope) {
+  function MainController($rootScope) {
     var that = this;
 
     $rootScope.root = 'Root 1';
   }
+  
   // @ngInject
-  function MainConfig($urlRouterProvider){
+  function MainConfig($urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
+  }
+
+  // @ngInject
+  function MainRun($rootScope, dbc) {
+    $rootScope.logout = function() {
+      console.log( 'logout' );
+      dbc.get$Auth.$unauth();
+    };
   }
 
 })();
