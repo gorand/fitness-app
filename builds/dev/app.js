@@ -361,71 +361,6 @@
   'use strict';
 
   angular
-    .module('fitness.workouts', [
-      'fitness.dbc'
-    ])
-    .config(workoutConfig)
-
-    //ngIngect
-    function workoutConfig($stateProvider) {
-      $stateProvider
-        .state( 'workouts', {
-          url: '/workouts',
-          templateUrl: 'app/workouts/workouts.html',
-          controller: 'WorkoutCtrl',
-          controllerAs: 'wc'
-        });
-      }
-
-})();
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.workouts')
-    .controller('WorkoutCtrl', WorkoutController)
-  
-     function WorkoutController(workouts) {
-      var sc = this;
-      sc.workouts = [];
-      workouts.getWorkouts().then(function(_data) {
-        console.log( _data );
-        sc.workouts = _data;
-      });
-    }
-
-})();
-
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.workouts')
-    .factory('workouts', WorkoutFactory)
-  
-  // @ngInject
-  function WorkoutFactory(dbc, $firebaseArray) {
-    var fc = {};
-    var ref = dbc.getRef();
-    var workotsRef = ref.child('workout');
-
-    var workouts = null;
-
-    fc.getWorkouts = function(){
-      return $firebaseArray(workotsRef).$loaded(function(_d){
-        return _d;
-      });
-    };
- 
-    return fc;
-  }
-
-})();
-
-;(function(){
-  'use strict';
-
-  angular
     .module('fitness.users', [
       'fitness.dbc'
     ])
@@ -1690,6 +1625,99 @@
 
       return msg;
     }
+  }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts', [
+      'fitness.dbc'
+    ])
+    .config(workoutConfig)
+
+    //ngIngect
+    function workoutConfig($stateProvider) {
+      $stateProvider
+        .state( 'workouts', {
+          url: '/workouts',
+          templateUrl: 'app/workouts/workouts.html',
+          controller: 'WorkoutCtrl',
+          controllerAs: 'wc'
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts')
+    .controller('WorkoutCtrl', WorkoutController)
+  
+     function WorkoutController(workouts) {
+      var sc = this;
+
+      sc.editWorkout = function(_workout) {
+        console.log( _workout );
+        sc.editingWorkout = {
+          name: _workout.name,
+          type: _workout.type
+        };
+      };
+
+
+
+      sc.createWorkout = function() {
+        workouts.createBlankWorkout().then(function(_data) {
+          console.log( _data );
+          sc.editWorkout(_data);
+        })
+      };
+
+      sc.workouts = [];
+      workouts.getWorkouts().then(function(_data) {
+        console.log( _data );
+        sc.workouts = _data;
+      });
+
+
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.workouts')
+    .factory('workouts', WorkoutFactory)
+  
+  // @ngInject
+  function WorkoutFactory(dbc, $firebaseArray, $firebaseObject) {
+    var fc = {};
+    var ref = dbc.getRef();
+    var workotsRef = ref.child('workouts');
+
+    var workouts = null;
+
+    fc.getWorkouts = function() {
+      return $firebaseArray(workotsRef).$loaded(function(_d){
+        return _d;
+      });
+    };
+
+    fc.createBlankWorkout = function() {
+      return $firebaseArray(workotsRef).$add({
+        name: '',
+        type: ''
+      }).then(function(_ref) {
+        return $firebaseObject(_ref).$loaded();
+      });
+    }
+ 
+    return fc;
   }
 
 })();
