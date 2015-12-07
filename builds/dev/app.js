@@ -1667,7 +1667,10 @@
         };
       };
 
-
+      sc.saveWorkout = function() {
+        workouts.saveWorkout(sc.editingWorkout).then(function() {
+        });
+      };
 
       sc.createWorkout = function() {
         workouts.createBlankWorkout().then(function(_data) {
@@ -1705,6 +1708,15 @@
     fc.getWorkouts = function() {
       return $firebaseArray(workotsRef).$loaded(function(_d){
         return _d;
+      });
+    };
+
+    fc.saveWorkout = function(_workout) {
+      var workout = $firebaseObject(workotsRef.child(_workout.id));
+      return workout.$loaded(function(_dbworkout) {
+        _dbworkout.name = _workout.name;
+        _dbworkout.type = _workout.type;
+        return _dbworkout.$save();
       });
     };
 

@@ -16,7 +16,10 @@
         };
       };
 
-
+      sc.saveWorkout = function() {
+        workouts.saveWorkout(sc.editingWorkout).then(function() {
+        });
+      };
 
       sc.createWorkout = function() {
         workouts.createBlankWorkout().then(function(_data) {
