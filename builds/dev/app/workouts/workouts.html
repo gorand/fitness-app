@@ -6,7 +6,8 @@
       <th>Тип тренировки</th>
       <th>Тип</th>
     </tr>
-    <tr ng-repeat="workout in wc.workouts">
+    <tr ng-repeat="workout in wc.workouts"
+        ng-click="wc.editWorkout(workout)">
       <td> {{ workout.name }} </td>
       <td> {{ workout.type }} </td>
       <td> {{ workout.typeWorkouts }} </td>
@@ -17,7 +18,7 @@
 <pre>{{ wc.editingWorkout | json }}</pre>
 
 <div class="container">
-  <form class="form-horizontal">
+  <form class="form-horizontal" >
     <fieldset>
       <div class="col-sm-6">
         <legend>Добавить тренировку</legend>

@@ -30,8 +30,8 @@
 
     fc.createBlankWorkout = function() {
       return $firebaseArray(workotsRef).$add({
-        name: '',
-        type: ''
+        name: null,
+        type: null
       }).then(function(_ref) {
         return $firebaseObject(_ref).$loaded();
       });
