@@ -6,7 +6,7 @@
     .factory('workouts', WorkoutFactory)
   
   // @ngInject
-  function WorkoutFactory(dbc, $firebaseArray, $firebaseObject) {
+  function WorkoutFactory($q, dbc, $firebaseArray, $firebaseObject) {
     var fc = {};
     var ref = dbc.getRef();
     var workotsRef = ref.child('workouts');
@@ -30,6 +30,7 @@
 
     fc.createBlankWorkout = function() {
       return $firebaseArray(workotsRef).$add({
+        id: null,
         name: null,
         type: null
       }).then(function(_ref) {

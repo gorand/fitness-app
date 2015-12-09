@@ -1661,7 +1661,9 @@
 
       sc.editWorkout = function(_workout) {
         console.log( _workout );
+        sc.showForm = true;
         sc.editingWorkout = {
+          id: _workout.$id,
           name: _workout.name,
           type: _workout.type
         };
@@ -1698,7 +1700,7 @@
     .factory('workouts', WorkoutFactory)
   
   // @ngInject
-  function WorkoutFactory(dbc, $firebaseArray, $firebaseObject) {
+  function WorkoutFactory($q, dbc, $firebaseArray, $firebaseObject) {
     var fc = {};
     var ref = dbc.getRef();
     var workotsRef = ref.child('workouts');
@@ -1722,6 +1724,7 @@
 
     fc.createBlankWorkout = function() {
       return $firebaseArray(workotsRef).$add({
+        id: null,
         name: null,
         type: null
       }).then(function(_ref) {

@@ -10,7 +10,9 @@
 
       sc.editWorkout = function(_workout) {
         console.log( _workout );
+        sc.showForm = true;
         sc.editingWorkout = {
+          id: _workout.$id,
           name: _workout.name,
           type: _workout.type
         };
