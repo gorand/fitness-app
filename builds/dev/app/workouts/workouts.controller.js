@@ -20,6 +20,7 @@
 
       sc.saveWorkout = function() {
         workouts.saveWorkout(sc.editingWorkout).then(function() {
+          sc.cancelWorkout();
         });
       };
 
@@ -30,6 +31,22 @@
         })
       };
 
+      sc.removeWorkout = function() {
+        workouts.deleteWorkout(sc.editingWorkout).then(function() {
+          sc.cancelWorkout();
+        })
+      };
+
+      sc.cancelWorkout = function() {
+        sc.showForm = false;
+        sc.editingWorkout = {
+          id: null,
+          name: null,
+          type: null
+        };
+      };
+
+      sc.cancelWorkout();
       sc.workouts = [];
       workouts.getWorkouts().then(function(_data) {
         console.log( _data );

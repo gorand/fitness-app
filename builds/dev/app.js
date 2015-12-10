@@ -268,6 +268,29 @@
 
 })();
 
+;(function() {
+  'use strict'
+  angular
+    .module('fitness.profile', [])
+    .controller('ProfileCtrl', ProfileController)
+    .config(ProfileConfig)
+
+  // @ngInject
+  function ProfileController() {
+    console.log( 'Profile Page' );
+  }
+
+  // @ngInject
+  function ProfileConfig($stateProvider) {
+    $stateProvider
+      .state('profile', {
+        url: '/profile',
+        templateUrl: 'app/profile/profile.html',
+        controller: 'ProfileCtrl'
+      });
+  }
+
+})();
 ;(function(){
   'use strict';
 
@@ -334,29 +357,6 @@
 
 })();
 
-;(function() {
-  'use strict'
-  angular
-    .module('fitness.profile', [])
-    .controller('ProfileCtrl', ProfileController)
-    .config(ProfileConfig)
-
-  // @ngInject
-  function ProfileController() {
-    console.log( 'Profile Page' );
-  }
-
-  // @ngInject
-  function ProfileConfig($stateProvider) {
-    $stateProvider
-      .state('profile', {
-        url: '/profile',
-        templateUrl: 'app/profile/profile.html',
-        controller: 'ProfileCtrl'
-      });
-  }
-
-})();
 ;(function(){
   'use strict';
 
@@ -1671,6 +1671,7 @@
 
       sc.saveWorkout = function() {
         workouts.saveWorkout(sc.editingWorkout).then(function() {
+          sc.cancelWorkout();
         });
       };
 
@@ -1681,6 +1682,22 @@
         })
       };
 
+      sc.removeWorkout = function() {
+        workouts.deleteWorkout(sc.editingWorkout).then(function() {
+          sc.cancelWorkout();
+        })
+      };
+
+      sc.cancelWorkout = function() {
+        sc.showForm = false;
+        sc.editingWorkout = {
+          id: null,
+          name: null,
+          type: null
+        };
+      };
+
+      sc.cancelWorkout();
       sc.workouts = [];
       workouts.getWorkouts().then(function(_data) {
         console.log( _data );
@@ -1703,18 +1720,18 @@
   function WorkoutFactory($q, dbc, $firebaseArray, $firebaseObject) {
     var fc = {};
     var ref = dbc.getRef();
-    var workotsRef = ref.child('workouts');
+    var workoutsRef = ref.child('workouts');
 
     var workouts = null;
 
     fc.getWorkouts = function() {
-      return $firebaseArray(workotsRef).$loaded(function(_d){
+      return $firebaseArray(workoutsRef).$loaded(function(_d){
         return _d;
       });
     };
 
     fc.saveWorkout = function(_workout) {
-      var workout = $firebaseObject(workotsRef.child(_workout.id));
+      var workout = $firebaseObject(workoutsRef.child(_workout.id));
       return workout.$loaded(function(_dbworkout) {
         _dbworkout.name = _workout.name;
         _dbworkout.type = _workout.type;
@@ -1722,8 +1739,12 @@
       });
     };
 
+    fc.deleteWorkout = function(_workout) {
+      return $firebaseObject(workoutsRef.child(_workout.id)).$remove();
+    }
+
     fc.createBlankWorkout = function() {
-      return $firebaseArray(workotsRef).$add({
+      return $firebaseArray(workoutsRef).$add({
         id: null,
         name: null,
         type: null
@@ -1731,7 +1752,7 @@
         return $firebaseObject(_ref).$loaded();
       });
     }
- 
+    
     return fc;
   }
 
