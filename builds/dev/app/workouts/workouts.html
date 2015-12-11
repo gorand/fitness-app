@@ -24,7 +24,7 @@
               </div>
               <div class="form-group">
                 <label class="col-sm-2 text-right control-label" for="fieldPassword">Тип</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                   <select class="form-control" ng-model="wc.editingWorkout.type">
                     <option value="">не указана</option>
                     <option value="Кардио">Кардио</option>
@@ -33,9 +33,11 @@
                   </select>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" ng-click="wc.saveWorkout()">Сохранить</button>
-              <button type="submit" class="btn btn-default" ng-click="wc.cancelWorkout()">Отмена</button>
-              <button type="submit" class="btn btn-danger" ng-click="wc.removeWorkout()">Удалить</button>
+              <div class="col-sm-8 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary" ng-click="wc.saveWorkout()">Сохранить</button>
+                <button type="submit" class="btn btn-default" ng-click="wc.cancelWorkout()">Отмена</button>
+                <button type="submit" class="btn btn-danger pull-right" ng-click="wc.removeWorkout()">Удалить</button>
+              </div>
         </form>      
       </td>
     </tr>
