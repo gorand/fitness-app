@@ -21,7 +21,7 @@
     };
     
     fc.getUser = function(_id) {
-      return $firebaseArray(usersRef.child(_id)).$loaded();
+      return $firebaseObject(usersRef.child(_id)).$loaded();
     }
 
     fc.createBlankUser = function() {

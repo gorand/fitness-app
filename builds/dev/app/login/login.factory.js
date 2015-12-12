@@ -19,7 +19,7 @@
       if (authDataFire) {// Logged in
         console.log('$onAuth: Logged in ', authDataFire);
         users.getUser(authDataFire.uid).then(function(_user){
-          console.log('onAuth', +(new Date()));
+          console.log(_user);
           $rootScope.currentUser = {
             uid: authDataFire.uid,
             loggedIn: true,
