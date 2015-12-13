@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Информация о пользователе</h1>
+  <h1>Пользователи</h1>
   <form ng-show name="edtiUser" >
     <div class="form-group">
       <label for="nameEdit">Имя</label>
@@ -17,18 +17,14 @@
   </form>
   <table class="table">
     <tr>
-      <th>ID</th>
       <th>Имя</th>
-      <th>Возраст</th>
       <th>Аватар</th>
-      <th>Последний визит</th>
+      <th>Зарегистрирован</th>
     </tr>
     <tr ng-repeat="user in uc.users">
-      <td> {{ user.index  }} </td>
-      <td> {{ user.name }} </td>
-      <td> {{ user.age }} </td>
+      <td> {{ user.surname }} {{ user.name }} </td>
       <td> <img ng-src="{{ user.picture }}" alt="{{ user.name }}">  </td>
-      <td> {{ user.registered }} </td>
+      <td> {{ user.registered | since}} </td>
     </tr>
   </table>
 </div>

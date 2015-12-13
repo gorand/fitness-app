@@ -5,7 +5,8 @@
     .module('fitness.users')
     .controller('UserCtrl', UserController)
   
-     function UserController(users) {
+    //ngIngect
+    function UserController(users) {
       var sc = this;
       sc.users = [];
       users.getUsers().then(function(_data) {

@@ -5,7 +5,8 @@
     .module('fitness.workouts')
     .controller('WorkoutCtrl', WorkoutController)
   
-     function WorkoutController(workouts) {
+    //ngIngect
+    function WorkoutController(workouts) {
       var sc = this;
 
       sc.editWorkout = function(_workout) {
@@ -52,8 +53,6 @@
         console.log( _data );
         sc.workouts = _data;
       });
-
-
     }
 
 })();
