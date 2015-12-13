@@ -1,13 +1,13 @@
 <ul class="nav nav-pills pull-right">
-  <li role="presentation"><a href="#/users">Пользователи</a></li>
-  <li role="presentation"><a href="#/profile">Личный кабинет</a></li>
-  <li role="presentation"><a href="#/about">О нас</a></li>
-  <li role="presentation"><a href="#/signin">Войти</a></li>
-  <li role="presentation"><a href="#/signup">Регистрация</a></li>
-  <li role="presentation"><a ng-click="logout()" class="btn btn-default" href="#/signup">Выйти</a></li>
+  <li><a ui-sref="users">Пользователи</a></li>
+  <li><a ui-sref="profile">Личный кабинет</a></li>
+  <li><a ui-sref="about">О нас</a></li>
+  <li><a ui-sref="signin">Войти</a></li>
+  <li><a ui-sref="signup">Регистрация</a></li>
+  <li><a ng-click="logout()" class="btn btn-default" ui-sref="signup">Выйти</a></li>
 
   <li>
-    <a href="#" class="nav-brand"> {{ currentUser.fullname }} </a>
+    <a ui-sref="#" class="nav-brand"> {{ currentUser.fullname }} </a>
   </li>
 
 </ul>

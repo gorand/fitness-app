@@ -21,6 +21,10 @@
       return auth;
     }
 
+    fc.isLogin = function() {
+      return auth.$getAuth();
+    }
+
     return fc;
   }
 

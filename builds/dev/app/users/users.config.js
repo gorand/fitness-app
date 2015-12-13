@@ -14,7 +14,8 @@
           url: '/users',
           templateUrl: 'app/users/users.html',
           controller: 'UserCtrl',
-          controllerAs: 'uc'
+          controllerAs: 'uc',
+          authenticate: true
         });
       }
 
