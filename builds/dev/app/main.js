@@ -39,7 +39,10 @@
         if(toState.authenticate && !dbc.isLogin()) {
           $state.transitionTo('about');
           event.preventDefault();
+          $rootScope.isLogged = false;
           console.log( "Transition To about page" );
+        } else if (!toState.authenticate && dbc.isLogin()) {
+          $rootScope.isLogged = true;
         }
       });
 
