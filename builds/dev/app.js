@@ -36,12 +36,12 @@
 
     $rootScope.$on('$stateChangeStart',
       function(event, toState, toParams, fromState, fromParams) {
-        if(toState.authenticate && !dbc.isLogin()) {
-          $state.transitionTo('about');
+        if(toState.registered && !dbc.isLogin()) {
+          $state.transitionTo('profile');
           event.preventDefault();
           $rootScope.isLogged = false;
           console.log( "Transition To about page" );
-        } else if (!toState.authenticate && dbc.isLogin()) {
+        } else if (toState.registered && dbc.isLogin()) {
           $rootScope.isLogged = true;
         }
       });
@@ -156,13 +156,15 @@
           url: '/signup',
           templateUrl: 'app/login/signup.html',
           controller: 'LoginCtrl',
-          controllerAs: 'lc'
+          controllerAs: 'lc',
+          registered: false
         })
         .state( 'signin', {
           url: '/signin',
           templateUrl: 'app/login/signin.html',
           controller: 'LoginCtrl',
-          controllerAs: 'lc'
+          controllerAs: 'lc',
+          registered: false
         });
       }
 
@@ -377,149 +379,6 @@
   }
 
 })();
-;(function() {
-  'use strict';
-
-  angular
-    .module('fitness.persons', [])
-    .controller('PersonCtrl', PersonController)
-
-  // @ngInject
-  function PersonController() {
-    var sc = this;
-    var person = [];
-
-    angular.forEach(listJson, function(item){
-      var date = +new Date(item.registered);
-      item.registered = date;
-      person.push(item);
-    });
-
-    sc.users = person;
-  }
-})();
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.users', [
-      'fitness.dbc'
-    ])
-    .config(userConfig)
-
-    //ngIngect
-    function userConfig($stateProvider) {
-      $stateProvider
-        .state( 'users', {
-          url: '/users',
-          templateUrl: 'app/users/users.html',
-          controller: 'UserCtrl',
-          controllerAs: 'uc',
-          authenticate: true
-        });
-      }
-
-})();
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.users')
-    .controller('UserCtrl', UserController)
-  
-    //ngIngect
-    function UserController(users) {
-      var sc = this;
-      sc.users = [];
-      users.getUsers().then(function(_data) {
-        sc.users = _data;
-        console.log( _data );
-      });
-    }
-
-})();
-
-;(function(){
-  'use strict';
-
-  angular
-    .module('fitness.users')
-    .factory('users', UserFactory)
-  
-  // @ngInject
-  function UserFactory(dbc, $firebaseArray, $firebaseObject) {
-    var fc = {};
-    var ref = dbc.getRef();
-    var usersRef = ref.child('users');
-
-    var users = null;
-
-    fc.getUsers = function() {
-      return $firebaseArray(usersRef).$loaded(function(_data){
-        // console.log(_data);
-        return _data;
-      });
-    };
-    
-    fc.getUser = function(_id) {
-      return $firebaseObject(usersRef.child(_id)).$loaded();
-    }
-
-    fc.createBlankUser = function() {
-      return $firebaseArray(usersRef).$add({
-        name: '',
-        surname: ''
-      }).then(function(_ref){
-        return $firebaseObject(_ref).$loaded();
-      })
-    }
-    return fc;
-  }
-
-})();
-
-;(function() {
-  'use strict';
-
-  angular
-    .module('fitness.users')
-    .filter('since', FromTime);
-
-  // @ngInject
-  function FromTime(){
-    return function(date){
-      var
-        msg,
-        now = +new Date(),
-        diff = (now - date)/1000,
-        min = 60,
-        hour = 60*min,
-        day = 24*hour,
-        month = 30*day,
-        threeMonths = 90*day,
-        sixMonths = 180*day,
-        year = 365*day;
-      
-      if(diff < min)
-        msg = "только что";
-      else if(diff > min && diff < hour)
-        msg = "в течение часа";
-      else if(diff > hour && diff < day)
-        msg = "более суток назад";
-      else if(diff > day && diff < month)
-        msg = "больше, чем месяц назад";
-      else if(diff > month && diff < threeMonths)
-        msg = "более 3 месяцев назад";
-      else if(diff > threeMonths && diff < sixMonths)
-        msg = "более полугода";
-      else
-        msg = "больше года назад";
-
-      return msg;
-    }
-  }
-
-})();
 ;(function(){
   'use strict';
 
@@ -645,6 +504,150 @@
     }
     
     return fc;
+  }
+
+})();
+
+;(function() {
+  'use strict';
+
+  angular
+    .module('fitness.persons', [])
+    .controller('PersonCtrl', PersonController)
+
+  // @ngInject
+  function PersonController() {
+    var sc = this;
+    var person = [];
+
+    angular.forEach(listJson, function(item){
+      var date = +new Date(item.registered);
+      item.registered = date;
+      person.push(item);
+    });
+
+    sc.users = person;
+  }
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.users', [
+      'fitness.dbc'
+    ])
+    .config(userConfig)
+
+    //ngIngect
+    function userConfig($stateProvider) {
+      $stateProvider
+        .state( 'users', {
+          url: '/users',
+          templateUrl: 'app/users/users.html',
+          controller: 'UserCtrl',
+          controllerAs: 'uc',
+          registered: true
+        });
+      }
+
+})();
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.users')
+    .controller('UserCtrl', UserController)
+  
+    //ngIngect
+    function UserController(users) {
+      var sc = this;
+      sc.users = [];
+      users.getUsers().then(function(_data) {
+        sc.users = _data;
+        console.log( _data );
+      });
+    }
+
+})();
+
+;(function(){
+  'use strict';
+
+  angular
+    .module('fitness.users')
+    .factory('users', UserFactory)
+  
+  // @ngInject
+  function UserFactory(dbc, $firebaseArray, $firebaseObject) {
+    var fc = {};
+    var ref = dbc.getRef();
+    var usersRef = ref.child('users');
+
+    var users = null;
+
+    fc.getUsers = function() {
+      return $firebaseArray(usersRef).$loaded(function(_data){
+        // console.log(_data);
+        return _data;
+      });
+    };
+    
+    fc.getUser = function(_id) {
+      return $firebaseObject(usersRef.child(_id)).$loaded();
+    }
+
+    fc.createBlankUser = function() {
+      return $firebaseArray(usersRef).$add({
+        name: '',
+        surname: ''
+      }).then(function(_ref){
+        return $firebaseObject(_ref).$loaded();
+      })
+    }
+    return fc;
+  }
+
+})();
+
+;(function() {
+  'use strict';
+
+  angular
+    .module('fitness.users')
+    .filter('since', FromTime);
+
+  // @ngInject
+  function FromTime(){
+    return function(date){
+      var
+        msg,
+        now = +new Date(),
+        diff = (now - date)/1000,
+        min = 60,
+        hour = 60*min,
+        day = 24*hour,
+        month = 30*day,
+        threeMonths = 90*day,
+        sixMonths = 180*day,
+        year = 365*day;
+      
+      if(diff < min)
+        msg = "только что";
+      else if(diff > min && diff < hour)
+        msg = "в течение часа";
+      else if(diff > hour && diff < day)
+        msg = "более суток назад";
+      else if(diff > day && diff < month)
+        msg = "больше, чем месяц назад";
+      else if(diff > month && diff < threeMonths)
+        msg = "более 3 месяцев назад";
+      else if(diff > threeMonths && diff < sixMonths)
+        msg = "более полугода";
+      else
+        msg = "больше года назад";
+
+      return msg;
+    }
   }
 
 })();

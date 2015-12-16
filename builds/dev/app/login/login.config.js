@@ -14,13 +14,15 @@
           url: '/signup',
           templateUrl: 'app/login/signup.html',
           controller: 'LoginCtrl',
-          controllerAs: 'lc'
+          controllerAs: 'lc',
+          registered: false
         })
         .state( 'signin', {
           url: '/signin',
           templateUrl: 'app/login/signin.html',
           controller: 'LoginCtrl',
-          controllerAs: 'lc'
+          controllerAs: 'lc',
+          registered: false
         });
       }
 

@@ -36,12 +36,12 @@
 
     $rootScope.$on('$stateChangeStart',
       function(event, toState, toParams, fromState, fromParams) {
-        if(toState.authenticate && !dbc.isLogin()) {
-          $state.transitionTo('about');
+        if(toState.registered && !dbc.isLogin()) {
+          $state.transitionTo('profile');
           event.preventDefault();
           $rootScope.isLogged = false;
           console.log( "Transition To about page" );
-        } else if (!toState.authenticate && dbc.isLogin()) {
+        } else if (toState.registered && dbc.isLogin()) {
           $rootScope.isLogged = true;
         }
       });

@@ -2,8 +2,8 @@
   <li><a ui-sref="users">Пользователи</a></li>
   <li><a ng-if="isLogged" ui-sref="profile">Личный кабинет</a></li>
   <li><a ui-sref="about">О нас</a></li>
-  <li><a ui-sref="signin">Войти</a></li>
-  <li><a ui-sref="signup">Регистрация</a></li>
+  <li><a ng-if="!isLogged" ui-sref="signin">Войти</a></li>
+  <li><a ng-if="!isLogged" ui-sref="signup">Регистрация</a></li>
   <li><a ng-if="isLogged" ng-click="logout()" class="btn btn-default" ui-sref="signup">Выйти</a></li>
 
   <li>

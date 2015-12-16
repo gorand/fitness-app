@@ -15,7 +15,7 @@
           templateUrl: 'app/users/users.html',
           controller: 'UserCtrl',
           controllerAs: 'uc',
-          authenticate: true
+          registered: true
         });
       }
 
